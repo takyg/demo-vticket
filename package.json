@@ -1,0 +1,8 @@
+{
+  "name": "demo-vticket",
+  "description": "Ｖチケットデモ",
+  "version": "1.0.0",
+  "engines": {
+    "node": "8.9.4"
+  }
+}
