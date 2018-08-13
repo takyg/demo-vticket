@@ -1,0 +1,184 @@
+@charset "utf-8";
+
+#header{background-image:url(/vticket/info/osaka/images/osaka.jpg)}
+
+#itemlist span.value.use1{background-color: royalblue;}
+#itemlist span.value.use2{background-color: darkorange;}
+#itemlist span.value.use3{background-color: forestgreen;}
+#itemlist span.value.use4{background-color: hotpink;}
+
+.marquee-text {
+    overflow: hidden;
+    position: relative;
+}
+.marquee-text .marquee {
+    font-size: 1.2em;
+    display: inline-block;
+}
+@media only screen and (max-width:767px){
+    .marquee-text .marquee {
+        white-space: nowrap;
+        transform:translateX(100%);
+        animation: marquee-text 20s cubic-bezier(0.35, 0.03, 0.84, 0.96) infinite;
+    }
+    @keyframes marquee-text{
+        0%   {transform: translateX(0)}
+        20%  {transform: translateX(0)}
+        80%  {transform: translateX(-70%)}
+        98% {transform: translateX(-70%)}
+        100% {transform: translateX(0%)}
+    }
+    table.flat td.A:before {content: "\f044  [A]"; font-family: FontAwesome}
+    table.flat td.B:before {content: "\f044  [B]"; font-family: FontAwesome}
+    table.flat td.C:before {content: "\f044  [C]"; font-family: FontAwesome}
+    table.flat td.D:before {content: "\f044  [D]"; font-family: FontAwesome}
+    table.flat td.E:before {content: "\f044  [E]"; font-family: FontAwesome}
+    table.flat td.state:before {content: "\f041  府県"; font-family: FontAwesome}
+    table.flat td.parking:before {content: "\f041  駐車場"; font-family: FontAwesome}
+    table.flat td.address-sales-time:before {content: "\f041 \a 住所・営業時間";font-family: FontAwesome}
+    table.flat td.part1-day:before {content: "\f007  9:00～15:00 \a 平日";font-family: FontAwesome}
+    table.flat td.part1-holiday:before {content: "\f007  9:00～15:00 \a 休日";font-family: FontAwesome}
+    table.flat td.part1-season:before {content: "\f007 \a 9:00～15:00ホリデーシーズン"; font-family: FontAwesome}
+    table.flat td.part2-day:before {content: "\f007  16:00～21:00 \a 平日";font-family: FontAwesome}
+    table.flat td.part2-holiday:before {content: "\f007  16:00～21:00 \a 休日";font-family: FontAwesome}
+    table.flat td.part2-season:before {content: "\f007 \a 16:00～21:00ホリデーシーズン"; font-family: FontAwesome}
+}
+#com-information .nav{
+    float: right;
+    margin-top: 0;
+}
+#free-call {
+    float: right;
+    padding: 10px 15px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #fdf6d6;
+    text-align: center;
+}
+#free-call .number {
+    font-size: 25px;
+    white-space: nowrap;
+    padding-left: 45px;
+    background-image: url(/vticket/info/image/common/fc_logo.png);
+    background-repeat: no-repeat;
+    background-size: 35px;
+}
+#free-call .sales_time {
+    display: block;
+    font-size: small;
+    font-weight: normal;
+    background-color: #f9f9f9;
+    padding: 0.4em 0.8em;
+    border-radius: 3px 6px;
+}
+#free-call .sales_time::before {
+    content: "営業時間";
+    color: #486777;
+    margin-right: 1em;
+    font-weight: bold;
+}
+span.annotation::after {
+    white-space:pre-line;
+    content: "メールアドレスの記載がある場合は、申し込み受付時、および出荷時にメールでお知らせいたします。\a" 
+        " また、連絡が必要な際にメールにてお問合せさせていただく場合がございます。\a"
+        "メールアドレスはお間違えのない様、再度ご確認お願いいたします。\a"
+        "メールアドレスをお間違えになると送信されません。\a"
+        "お知らせメールは「office_vticket@jtb-benefit.co.jp」より会員様が記入されたアドレスへ送信されます。\a"
+        "お客様環境によっては「office_vticket@jtb-benefit.co.jp」からのメール受取許可を行う必要があります。迷惑メール設定の解除をお願いします。";
+}
+span.annotation {
+    display: block;
+}
+
+#item_html dt.contents ~ dd.contents { border-top-right-radius: 1ex; border-bottom-right-radius: 1ex; margin-bottom: 2ex;}
+#item_html dt.contents ~ dd.contents::before { content:""; display:block; background-color:#a1c7ff; margin-top: -0.6em; margin-left: -0.6em; width: 23ex; padding-left: 1ex; border-bottom-right-radius: 2ex;}
+#item_html dt.contents ~ dd.contents.use1::before { content:"１枚用メニューの内容";}
+#item_html dt.contents ~ dd.contents.use2::before { content:"２枚用メニューの内容";}
+#item_html dt.contents ~ dd.contents.use3::before { content:"３枚用メニューの内容";}
+#item_html dt.contents ~ dd.contents.use4::before { content:"４枚用メニューの内容";}
+#item_html dt.contents ~ dd.contents { background-color: #f7f7f7; border-top: 0.5ex solid #d6d6d6;}
+#item_html dt.contents ~ dd.contents::before { background-color:#d6d6d6;}
+
+#item_html dt.icon {
+    margin-right: 3px;
+}
+
+/* 利用履歴の追加コメント */
+#unused-tickets-comment:after {
+    margin-top: 0.2em;
+    display: block;
+    text-indent: -1.2em;
+    padding-left: 1.2em;
+    content:"※ 共通券１枚につき一行の記載となっております。";
+    color: #1c8816;
+}
+#orders-comment:after {
+    margin-top: 0.2em;
+    display: block;
+    text-indent: -1.2em;
+    padding-left: 1.2em;
+    content:"※ この利用履歴画面では「コトメニュー」は共通券１枚ごとの利用を確認できるようにしております。\a"
+    "枚数２枚以上の「コトメニュー」をお申し込み頂いた場合は枚数分の履歴が記載されますのでご注意ください。";
+    color: #1c8816;
+    white-space: pre-wrap;
+}
+
+#formdiv_deliveryAddress1 {
+  margin-bottom:0;
+}
+#formdiv_deliveryAddress2 {
+  margin-top:0;
+}
+#formdiv_deliveryAddress2 * {
+  border-top:0;
+}
+#formdiv_deliveryAddress1 .input-group-addon {
+  border-bottom-left-radius: 0;
+}
+#formdiv_deliveryAddress1 .form-control {
+  border-bottom-right-radius: 0;
+}
+#formdiv_deliveryAddress2 .input-group-addon {
+  border-top-left-radius: 0;
+}
+#formdiv_deliveryAddress2 .form-control {
+  border-top-right-radius: 0;
+}
+span.address_tooltip::after,span.address_tooltip::before {
+    text-indent: -1.3em;
+    padding-left: 2em;
+    display: block;
+}
+span.address_tooltip::before {
+    white-space: pre-line;
+    content: "＜郵便番号を入力しても住所が表示されない場合は？＞\a"
+        "郵便番号を入力すると住所1欄に住所の一部が表示されますが、一部パソコンにおいてはセキュリティの関係で表示されない場合がございます。\a"
+        "表示されない場合はお手数ですが手入力をお願いします。\a\a";
+}
+span.address_tooltip::after {
+    white-space:pre-line;
+    content: "＜住所が長く入りきらない場合は？＞\a"
+    "住所１に入りきらない部分は住所２に続けてご記入ください。\a"
+    "* マンション名が長い場合：番地と棟番号、部屋番号があればマンション名を省略しても届きます\a"
+    "* その他住所が長い場合：郵便番号があれば都道府県名を省略しても届きます";
+}
+span.address_tooltip {
+    border-width: 1px;
+    border-style: solid;
+    width: auto;
+    padding-top: 0.3em;
+    padding-right: 1em;
+    padding-bottom: 0.3em;
+    border-radius: 0.4em;
+    margin-top: 0;
+    margin-right: 1em;
+    margin-bottom: 1.5em;
+    margin-left: 1em;
+    word-break: break-word;
+    display: block;
+    color: #bf7336;
+    background-color: #fffedc;
+    border-color: #d4bda8;
+}

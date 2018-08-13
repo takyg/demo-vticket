@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+#header{background-image:url(/vticket/info/kobe/images/kobe.jpg)}
+#itemlist span.value{visibility: hidden;}
+#ticket_number{display: none}
+.marquee-text {
+    overflow: hidden;
+    position: relative;
+}
+.marquee-text .marquee {
+    font-size: 1.2em;
+    display: inline-block;
+}
+@media only screen and (max-width:767px){
+    .marquee-text .marquee {
+        white-space: nowrap;
+        transform:translateX(100%);
+        animation: marquee-text 20s cubic-bezier(0.35, 0.03, 0.84, 0.96) infinite;
+    }
+    @keyframes marquee-text{
+        0%   {transform: translateX(0)}
+        20%  {transform: translateX(0)}
+        80%  {transform: translateX(-70%)}
+        98% {transform: translateX(-70%)}
+        100% {transform: translateX(0%)}
+    }
+}
+#com-information .nav{
+    float: right;
+    margin-top: 0;
+}
+#charge_search{display: none}
+ul.select-one li.first-term {display: inherit}
+ul.select-one li.second-term {display: none}
+#free-call {
+    float: right;
+    padding: 10px 15px;
+    margin-bottom: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #fdf6d6;
+    text-align: center;
+}
+#free-call .number {
+    font-size: 25px;
+    white-space: nowrap;
+    padding-left: 45px;
+    background-image: url(/vticket/info/image/common/fc_logo.png);
+    background-repeat: no-repeat;
+    background-size: 35px;
+}
+#free-call .sales_time {
+    display: block;
+    font-size: small;
+    font-weight: normal;
+    background-color: #f9f9f9;
+    padding: 0.4em 0.8em;
+    border-radius: 3px 6px;
+}
+#free-call .sales_time::before {
+    content: "営業時間";
+    color: #486777;
+    margin-right: 1em;
+    font-weight: bold;
+}
+#list ul.default > li:first-child {
+    display: none;
+}
+span.annotation::after {
+    white-space:pre-line;
+    content: "メールアドレスの記載がある場合は、申し込み受付時、および出荷時にメールでお知らせいたします。\a" 
+        " また、連絡が必要な際にメールにてお問合せさせていただく場合がございます。\a"
+        "メールアドレスはお間違えのない様、再度ご確認お願いいたします。\a"
+        "メールアドレスをお間違えになると送信されません。\a"
+        "お知らせメールは「office_vticket@jtb-benefit.co.jp」より会員様が記入されたアドレスへ送信されます。\a"
+        "お客様環境によっては「office_vticket@jtb-benefit.co.jp」からのメール受取許可を行う必要があります。迷惑メール設定の解除をお願いします。";
+}
+span.annotation {
+    display: block;
+}
+#formdiv_deliveryAddress1 {
+  margin-bottom:0;
+}
+#formdiv_deliveryAddress2 {
+  margin-top:0;
+}
+#formdiv_deliveryAddress2 * {
+  border-top:0;
+}
+#formdiv_deliveryAddress1 .input-group-addon {
+  border-bottom-left-radius: 0;
+}
+#formdiv_deliveryAddress1 .form-control {
+  border-bottom-right-radius: 0;
+}
+#formdiv_deliveryAddress2 .input-group-addon {
+  border-top-left-radius: 0;
+}
+#formdiv_deliveryAddress2 .form-control {
+  border-top-right-radius: 0;
+}
+span.address_tooltip::after,span.address_tooltip::before {
+    text-indent: -1.3em;
+    padding-left: 2em;
+    display: block;
+}
+span.address_tooltip::before {
+    white-space: pre-line;
+    content: "＜郵便番号を入力しても住所が表示されない場合は？＞\a"
+        "郵便番号を入力すると住所1欄に住所の一部が表示されますが、一部パソコンにおいてはセキュリティの関係で表示されない場合がございます。\a"
+        "表示されない場合はお手数ですが手入力をお願いします。\a\a";
+}
+span.address_tooltip::after {
+    white-space:pre-line;
+    content: "＜住所が長く入りきらない場合は？＞\a"
+    "住所１に入りきらない部分は住所２に続けてご記入ください。\a"
+    "* マンション名が長い場合：番地と棟番号、部屋番号があればマンション名を省略しても届きます\a"
+    "* その他住所が長い場合：郵便番号があれば都道府県名を省略しても届きます";
+}
+span.address_tooltip {
+    border-width: 1px;
+    border-style: solid;
+    width: auto;
+    padding-top: 0.3em;
+    padding-right: 1em;
+    padding-bottom: 0.3em;
+    border-radius: 0.4em;
+    margin-top: 0;
+    margin-right: 1em;
+    margin-bottom: 1.5em;
+    margin-left: 1em;
+    word-break: break-word;
+    display: block;
+    color: #bf7336;
+    background-color: #fffedc;
+    border-color: #d4bda8;
+}
