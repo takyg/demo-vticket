@@ -1,0 +1,107 @@
+exports.itemlist = (req, res) => {
+    console.log(req.body.message);
+    res.status(200).send(
+
+'<!DOCTYPE html>\n' +
+'<html lang="ja">\n' +
+'<head>\n' +
+'<meta charset="utf-8" />\n' +
+'<meta name="viewport" content="width=device-width, shrink-to-fit=yes" />\n' +
+'<title>デモサイト | 大阪わくわくプラン2018</title>\n' +
+'<link rel="stylesheet" href="https://www.elavel-club.com/vticket/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />\n' +
+'<link rel="stylesheet" href="https://www.elavel-club.com/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />\n' +
+'<link rel="stylesheet" type="text/css" href="https://www.elavel-club.com/vticket/css/front/layout.css?rev=12" media="all" />\n' +
+'<link rel="stylesheet" type="text/css" href="https://www.elavel-club.com/vticket/css/front/color.css?rev=12" media="all" />\n' +
+'<link rel="stylesheet" type="text/css" href="https://www.elavel-club.com/vticket/css/front/pc.css?rev=12" media="only screen and (min-width:768px)" />\n' +
+'<link rel="stylesheet" type="text/css" href="https://www.elavel-club.com/vticket/css/front/sp.css?rev=12" media="only screen and (max-width:767px)" />\n' +
+'<script src="https://www.elavel-club.com/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>\n' +
+'<script src="https://www.elavel-club.com/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>\n' +
+'<link rel="shortcut icon" href="https://www.elavel-club.com/vticket/images/favicon.ico" />\n' +
+'</head>\n' +
+'<body>\n' +
+'<script async src="https://www.googletagmanager.com/gtag/js?id=UA-108807669-1"></script>\n' +
+'<script>\n' +
+'    window.dataLayer = window.dataLayer || [];\n' +
+'    function gtag() { dataLayer.push(arguments); }\n' +
+'    gtag(\'js\', new Date());\n' +
+'\n' +
+'    gtag(\'config\', \'UA-108807669-1\');\n' +
+'    /*\n' +
+'    gtag(\'config\', \'UA-108807669-1\', {\'custom_map\': {\'dimension1\': \'cid\'}});\n' +
+'    */\n' +
+'</script>\n' +
+'<div id="container" >\n' +
+'<div id="header" class="">\n' +
+'<style type="text/css">@import url(https://www.elavel-club.com/vticket/info/osaka/css/osaka.css?v=1.3)</style>\n' +
+'<script>\n' +
+'$(function () { var comDimensionValue=$(\'p#user_info>span.number\').length==1?$(\'p#user_info>span.number\')[0].innerText.substring(0,6):\'000000\';gtag(\'event\', \'契約組織コード\', {\'dimension1\': comDimensionValue});});\n' +
+'</script>\n' +
+'			<a href="https://www.elavel-club.com/vticket/itemlist/" class="site-title hidden-xs">\n' +
+'<img src="https://www.elavel-club.com/vticket/images/logo/osaka2018_logo.png" alt="logo">\n' +
+'			</a>\n' +
+'<nav class="navbar navbar-inverse">\n' +
+'	<div class="container-fluid">\n' +
+'		<div class="navbar-header">\n' +
+'			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">\n' +
+'				<span class="sr-only">Toggle navigation</span>\n' +
+'				<span class="icon-bar"></span>\n' +
+'				<span class="icon-bar"></span>\n' +
+'				<span class="icon-bar"></span>\n' +
+'			</button>\n' +
+'<a href="/vticket/itemlist" class="site-title visible-xs-inline">大阪わくわくプラン2018</a>\n' +
+'		</div>\n' +
+'		\n' +
+'		<div class="collapse navbar-collapse" id="navbarEexample7">\n' +
+'			<ul class="nav navbar-nav">\n' +
+'				<li><a href="/vticket/itemlist"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;トップへ</a></li>\n' +
+'				<li><a href="/vticket/history"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;交換履歴</a></li>\n' +
+'			</ul>\n' +
+'<p id="user_info" class="navbar-text navbar-right"><span class="name pop popleft">カタログ　タロウ</span><span class="number">12345678901234</span><span class="charge pop popright">4</span><span class="expiration">2019/05/31</span></p>\n' +
+'            		</div>\n' +
+'	</div>\n' +
+'</nav>\n' +
+'</div>\n' +
+'\n' +
+'\n' +
+'<script type="text/javascript">\n' +
+'    var pageData;\n' +
+'    $.ajax({ url: \'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DySA4HPztCP5LMxAOnBKS_OSOrks/values/\\\'%E7%A2%BA%E8%AA%8D%E7%94%A8%E3%83%9A%E3%83%BC%E3%82%B8%E4%B8%80%E8%A6%A7\\\'!A:C?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ\', contentType: \'text/json\', dataType: "json", cache: false, success: function (data) {\n' +
+'        pageData = data;\n' +
+'        var h = \'\';\n' +
+'        if (location.hash.replace("#", "") != "") count = parseInt(location.hash.replace("#", ""));\n' +
+'        var i = 1;\n' +
+'        while (i < pageData.values.length - 1) {\n' +
+'            try { if (pageData.values[i][2]) h += pageData.values[i][2]; }\n' +
+'            finally { i++; }\n' +
+'        }\n' +
+'        $("#itemlist").html(h);\n' +
+'    }\n' +
+'    });\n' +
+'\n' +
+'$.ajax({ url: \'https://sheets.googleapis.com/v4/spreadsheets/1lK9AwVpRnnBta7BuKkRaN_pMQFeCWYfgOz1f2U9TMfg/values/TopContents601598?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ\', contentType: \'text/json\', dataType: "json", cache: false,\n' +
+'success: function (data) {$("#custom-contents>div.com").html(data.values[0]);}});\n' +
+'\n' +
+'</script>\n' +
+'    <div id="custom-contents"><div class="com">コンテンツ取得中…</div>\n' +
+'        <div class="kind" ><!-- 区分情報に設定された一覧用HTML --></div>\n' +
+'        <div class="category" ><!-- カテゴリ情報に設定された一覧用HTML --></div>\n' +
+'    </div>\n' +
+'    <div id="search" class="clearfix"><div id="categoly_search" class="condition-block clear-all col-sm-6"><p>メニューを選択</p><ul class="nav nav-pills range-sw"><li role="presentation" class="active"><a href="?c=0">全てのメニュー</a> </li> <li role="presentation" class=""><a href="?c=1"><i class="fa fa-gift"></i> モノメニュー</a></li><li role="presentation" class=""><a href="?c=11"><i class="fa fa-cutlery"></i> コトメニュー</a></li></ul></div><div id="charge_search" class="condition-block"><p>枚数で絞り込み</p><ul class="nav nav-pills"><li role="presentation" class="toggle-sw"><a href="/demo/">1枚用</a></li><li role="presentation" class="toggle-sw"><a href="/none.aspx">2枚用</a></li><li role="presentation" class="toggle-sw"><a href="?t=2">3枚用</a></li><li role="presentation" class="toggle-sw"><a href="?t=2">4枚用</a></li></ul></div><div id="keyword_search" class="condition-block col-sm-7"><p>キーワードで絞り込み</p><div class="input-group input-group-lg has-clear"><input type="text" class="form-control" id="inputGroup"><span class="control-clear right-button hidden"></span><span class="input-group-btn"><button class="btn btn-default" type="submit"><i class="fa fa-search"></i>検索</button></span></div></div></div>\n' +
+'    <div id="main-contents"><div id="list"><ul id="itemlist">\n' +
+'このサイトは「デモサイト」です。<br>\n' +
+'只今、メニューの一覧を取得しています。しばらくお待ちください。\n' +
+'</ul></div>\n' +
+'    </div>\n' +
+'\n' +
+'\n' +
+'<div id="href_top" onclick="$(\'html, body\').animate({scrollTop:0}, 400, \'swing\');">ページトップに戻る</div>\n' +
+'<div id="footer" >\n' +
+'	<span class="s_poly"><script  src="https://seal.verisign.com/getseal?host_name=www.elavel-club.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=ja" type="text/javascript"></script></span>\n' +
+'	<span class="p_poly"><a href="http://privacymark.jp/" target="_blank"><img alt="プライバシーマーク" height="80" src="//www.jtb-benefit.co.jp/images/icn_privacy75.gif" width="75"></a></span>\n' +
+'	<span class="copyright">Copyright &copy; JTB Benefit Service, inc.</span>\n' +
+'</div>\n' +
+'</div>\n' +
+'</body>\n' +
+'</html>\n' 
+    );
+};

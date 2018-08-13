@@ -1,0 +1,25 @@
+<html>
+    <head></head>
+    <body>
+<script type="text/javascript">
+    var pageData;
+    $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DySA4HPztCP5LMxAOnBKS_OSOrks/values/\'%E7%A2%BA%E8%AA%8D%E7%94%A8%E3%83%9A%E3%83%BC%E3%82%B8%E4%B8%80%E8%A6%A7\'!A:C?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ', contentType: 'text/json', dataType: "json", cache: false, success: function (data) {
+        pageData = data.values.filter(function (item) { return item.length == 3 });
+        var h = '';
+        var count = 1;
+        if (location.hash.replace("#", "") != "") count = parseInt(location.hash.replace("#", ""));
+        var i = count;
+        while (i < pageData.length - 1 && i < count + 20) {
+            try { h += pageData[i][2]; }
+            finally { i++; }
+        }
+        $("#itemlist").html(h);
+    }
+    });
+</script>
+<ul id="itemlist">
+このサイトは「デモサイト」です。<br>
+只今、メニューの一覧を取得しています。しばらくお待ちください。
+</ul>
+    </body>
+</html>
