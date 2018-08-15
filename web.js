@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 var pageBase = fs.readFileSync('./header.ejs', 'utf8');
 
 app.get('/test', function(req, res){
-	res.writeHead(200, {'Content-Type': 'text/html'});
+	res.set('Content-Type', 'text/html');
 	res.send('<html><head></head><body>ハンドラが見つかりました</body></html>');
 });
 
@@ -21,8 +21,8 @@ app.get('/temp', function(req, res){
 		title:"タイトルです",
 		content:"これはサンプルで作成したテンプレートです。",
 	});
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	res.write(html);
+	res.set('Content-Type', 'text/html');
+	res.send(html);
 	res.end();
 });
 
