@@ -9,7 +9,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-var pageBase = fs.readFileSync('./header.ejs', 'utf8');
+var pageBase = fs.readFileSync(app.get('views') + '/header.ejs', 'utf8');
 
 app.get('/test', function(req, res){
 	res.set('Content-Type', 'text/html');
