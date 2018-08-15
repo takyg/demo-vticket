@@ -19,7 +19,7 @@ app.get('/test', function(req, res){
 app.get('/temp', function(req, res){
 	var html = ejs.render(pageBase, {
 		title:"タイトルです",
-		content:"これはサンプルで作成したテンプレートです。",
+		contents:"これはサンプルで作成したテンプレートです。",
 	});
 	res.set('Content-Type', 'text/html');
 	res.send(html);
