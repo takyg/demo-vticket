@@ -1,4 +1,5 @@
 var ejs = require('ejs'); 
+var fs = require('fs'); 
 var express = require('express');
 var app = express();
 
