@@ -136,3 +136,9 @@ span.address_tooltip {
     background-color: #fffedc;
     border-color: #d4bda8;
 }
+/* 比較的小さな画面の場合 */
+@media (max-width:599px) {
+    #header {
+        margin-bottom: 5em;
+    }
+}
