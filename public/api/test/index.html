@@ -2,7 +2,7 @@
 <script type="text/javascript">
     const getCodeUrl  = 'https://us-central1-project-id-0646450299292950576.cloudfunctions.net/getCodeByValue?val=';
     const getValueUrl = 'https://us-central1-project-id-0646450299292950576.cloudfunctions.net/getValueByCode?code=';
-    $.ajax({ url: getCodeUrl, contentType: 'text/json', dataType: "json", cache: false, success: function (data) {
+    $.ajax({ url: getCodeUrl + '123', contentType: 'text/json', dataType: "json", cache: false, success: function (data) {
         $("#Panel_Results").html(JSON.stringify(data));
     }});
 </script><div id="Panel_Results"></div>
