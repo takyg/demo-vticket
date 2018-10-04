@@ -19,10 +19,22 @@
         <div class="panel" id="Panel_Results_Out"></div>
         <style>
             #Panel_Results_In::before {
-                content: "In:";
+                content: "In";
             }
             #Panel_Results_Out::before {
-                content: "Out:";
+                content: "Out";
+            }
+            #Panel_Results_In::before, #Panel_Results_Out::before {
+                color: white;
+                text-align: right;
+                background-color: #888;
+                display: block;
+                position: absolute;
+                right: 0;
+                top: 0;
+                border-top-right-radius: 0.3ex;
+                border-bottom-left-radius: 1ex;
+                padding: 0.3ex 2ex;
             }
             .panel {
                 border: solid 1px #ccc;
