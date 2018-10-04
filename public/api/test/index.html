@@ -11,9 +11,27 @@
             const getCodeUrl  = 'https://us-central1-project-id-0646450299292950576.cloudfunctions.net/getCodeByValue?val=';
             const getValueUrl = 'https://us-central1-project-id-0646450299292950576.cloudfunctions.net/getValueByCode?code=';
             $.ajax({ url: getCodeUrl + '123', contentType: 'text/plain', dataType: "json", cache: false, success: function (data) {
-                $("#Panel_Results").html(JSON.stringify(data));
+                $("#Panel_Results_In").html(data.in.val);
+                $("#Panel_Results_Out").html(data.out.code);
             }});
         </script>
-        <div id="Panel_Results"></div>
+        <div class="panel" id="Panel_Results_In"></div>
+        <div class="panel" id="Panel_Results_Out"></div>
+        <style>
+            #Panel_Results_In::before {
+                content: "In:";
+            }
+            #Panel_Results_Out::before {
+                content: "Out:";
+            }
+            .panel {
+                border: solid 1px #ccc;
+                border-radius: 0.5ex;
+                background-color: #e8e8e8;
+                width: 80%;
+                margin: 2em;
+                padding: 1ex;
+            }
+        </style>
     </body>
 </html>
