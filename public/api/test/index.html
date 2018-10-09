@@ -10,13 +10,16 @@
         <script type="text/javascript">
             const getCodeUrl  = 'https://us-central1-project-id-0646450299292950576.cloudfunctions.net/getCodeByValue?val=';
             const getValueUrl = 'https://us-central1-project-id-0646450299292950576.cloudfunctions.net/getValueByCode?code=';
-            $.ajax({ url: getCodeUrl + '123', contentType: 'text/plain', dataType: "json", cache: false, success: function (data) {
-                $("#Panel_Results_In").html(data.in.val);
-                $("#Panel_Results_Out").html(data.out.code);
-            }});
+            function updateNumber(){
+                $.ajax({ url: getCodeUrl + '' + parseInt(Math.random()*999999), contentType: 'text/plain', dataType: "json", cache: false, success: function (data) {
+                    $("#Panel_Results_In").html(data.in.val);
+                    $("#Panel_Results_Out").html(data.out.code);
+                }});
+            }
         </script>
-        <div class="panel" id="Panel_Results_In"></div>
-        <div class="panel" id="Panel_Results_Out"></div>
+        <div class="panel" id="Panel_Results_In">&nbsp;</div>
+        <div class="panel" id="Panel_Results_Out">&nbsp;</div>
+        <button id="update_button" onclick="updateNumber()">更新</button>
         <style>
             #Panel_Results_In::before {
                 content: "In";
@@ -44,6 +47,13 @@
                 margin: 2em;
                 padding: 1ex;
                 position: relative;
+            }
+            button#update_button {
+                padding: 1ex 3ex;
+                border-radius: 1ex;
+                border: solid 1px #8ba9d6;
+                background-color: #b1c5e8;
+                margin-left: 30%;
             }
         </style>
     </body>
