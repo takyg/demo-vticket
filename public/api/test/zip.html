@@ -1,0 +1,8 @@
+<!DOCTYPE html><html lang="ja"><head><title>test</title><script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script></head><body>
+<script type="text/javascript">
+    const getUrl  = 'http://zip.cgis.biz/xml/zip.php?zn=3440022';
+    $.ajax({ url: getUrl, contentType: 'text/xml', dataType: "xml", cache: false, success: function (data) {
+        $("#Panel_Results").html(XML.stringify(data));
+    }});
+</script><div id="Panel_Results"></div>
+</body></html>
