@@ -1,4 +1,4 @@
-/* 今すぐ利用 認証待ち画面 */
+/* 今すぐ利用 */
 #auth_msg_1 span.service-name,
 #auth_msg_1 span.date {
   font-size: 70%;
@@ -59,7 +59,22 @@
     background-repeat-y: no-repeat;
 }
 
-/* 今すぐ利用 認証済み画面 */
+#auth_msg_3 .charge::before {
+    content: "利用券残数: ";
+}
+#auth_msg_3 .charge::after {
+    content: "枚";
+}
+#auth_msg_3 .expiration::before {
+    content: "有効期限: ";
+}
+#auth_msg_4 .targetmenu::before {
+    content: "利用メニュー: ";
+}
+#auth_msg_4 .usecount::before {
+    content: "利用枚数: ";
+}
+
 #authcomp_msg_1 {
   background-image: url(/vticket/images/maru.svg);
   background-position-x: 90%;
