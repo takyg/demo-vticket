@@ -1,4 +1,4 @@
-﻿/* 今すぐ利用 認証待ち画面 */
+/* 今すぐ利用 認証待ち画面 */
 #auth_msg_1 span.service-name,
 #auth_msg_1 span.date {
   font-size: 70%;
@@ -48,6 +48,15 @@
   margin-left: -5.5em;
   vertical-align: middle;
   margin-bottom: 0;
+}
+
+#auth_msg_2 {
+    background-image: url(/vticket/images/user_card.png);
+    background-position-x: 90%;
+    background-position-y: 50%;
+    background-size: 95px;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
 }
 
 /* 今すぐ利用 認証済み画面 */
