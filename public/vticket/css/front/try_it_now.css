@@ -1,3 +1,10 @@
+@media all and (min-width: 768px) {
+    div#main-contents::before {
+        content:"お使いの機器は「今すぐ利用」に対応していない場合があります。"
+            "（テストにより表示）";
+    }
+}
+
 /* 今すぐ利用 */
 #auth_msg_1 span.service-name,
 #auth_msg_1 span.date {
