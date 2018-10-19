@@ -58,10 +58,10 @@
 }
 
 #auth_msg_2 {
-    background-image: url(/vticket/images/user_card.png);
+    background-image: url(/vticket/images/user_card_m.png);
+    background-size: 70px;
     background-position-x: 90%;
     background-position-y: 50%;
-    background-size: 95px;
     background-repeat-x: no-repeat;
     background-repeat-y: no-repeat;
 }
@@ -86,7 +86,7 @@
   background-image: url(/vticket/images/maru.svg);
   background-position-x: 90%;
   background-position-y: 50%;
-  background-size: auto;
+  background-size: 6em;
   background-repeat-x: no-repeat;
   background-repeat-y: no-repeat;
   background-color: #d9edf7;
