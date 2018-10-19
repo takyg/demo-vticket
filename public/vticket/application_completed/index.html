@@ -1,6 +1,59 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Master/osaka.front.master"%>
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NJN5ZX4');</script>
+<!-- End Google Tag Manager -->
+<meta name="viewport" content="width=device-width, shrink-to-fit=yes" />
+<title>デモサイト | 大阪わくわくプラン2018</title>
+<link rel="stylesheet" href="/vticket/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/layout.css?rev=12" media="all" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/color.css?rev=12" media="all" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (min-width:768px)" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (max-width:767px)" />
+<script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
+<script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+<link rel="shortcut icon" href="//vticket-mwg.firebaseapp.com/vticket/images/favicon.ico" />
+</head>
 
-<asp:Content ID="indexMainContent" ContentPlaceHolderID="MainContent" Runat="Server">
+<body>
+<div id="container" >
+<div id="header" class="">
+<style type="text/css">@import url(/vticket/info/osaka/css/osaka.css?v=1.3)</style>
+<script>
+$(function () { var comDimensionValue=$('p#user_info>span.number').length==1?$('p#user_info>span.number')[0].innerText.substring(0,6):'000000';gtag('event', '契約組織コード', {'dimension1': comDimensionValue});});
+</script>
+			<a href="/vticket/itemlist/" class="site-title hidden-xs">
+<img src="//vticket-mwg.firebaseapp.com/vticket/images/logo/osaka2018_logo.png" alt="logo">
+			</a>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+<a href="/vticket/itemlist" class="site-title visible-xs-inline">大阪わくわくプラン2018</a>
+		</div>
+		
+		<div class="collapse navbar-collapse" id="navbarEexample7">
+			<ul class="nav navbar-nav">
+				<li><a href="/vticket/itemlist"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;トップへ</a></li>
+				<li><a href="/vticket/history"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>&nbsp;交換履歴</a></li>
+			</ul>
+<p id="user_info" class="navbar-text navbar-right"><span class="name pop popleft">カタログ　タロウ</span><span class="number">12345678901234</span><span class="charge pop popright">4</span><span class="expiration">2019/05/31</span></p>
+            		</div>
+	</div>
+</nav>
+</div>
 <div id="main-contents" >
     <h2>ご利用ありがとうございました。</h2>
     <p>
@@ -10,4 +63,13 @@
     </p>
 
 </div>
-</asp:Content>
+
+<div id="href_top" onclick="$('html, body').animate({scrollTop:0}, 400, 'swing');">ページトップに戻る</div>
+<div id="footer" >
+	<span class="s_poly"><script  src="https://seal.verisign.com/getseal?host_name=www.elavel-club.com&amp;size=S&amp;use_flash=NO&amp;use_transparent=YES&amp;lang=ja" type="text/javascript"></script></span>
+	<span class="p_poly"><a href="http://privacymark.jp/" target="_blank"><img alt="プライバシーマーク" height="80" src="//www.jtb-benefit.co.jp/images/icn_privacy75.gif" width="75"></a></span>
+	<span class="copyright">Copyright &copy; JTB Benefit Service, inc.</span>
+</div>
+</div>
+</body>
+</html>
