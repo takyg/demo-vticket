@@ -67,6 +67,7 @@ $(function () { var comDimensionValue=$('p#user_info>span.number').length==1?$('
             finally { i++; }
         }
 	h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/");
+	h = h.replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
         $("#itemlist").html(h);
     }
     });
