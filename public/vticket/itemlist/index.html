@@ -56,26 +56,25 @@ $(function () { var comDimensionValue=$('p#user_info>span.number').length==1?$('
 </nav>
 </div>
 <script type="text/javascript">
-    var pageData;
-    $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DySA4HPztCP5LMxAOnBKS_OSOrks/values/\'%E7%A2%BA%E8%AA%8D%E7%94%A8%E3%83%9A%E3%83%BC%E3%82%B8%E4%B8%80%E8%A6%A7\'!A:C?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ', contentType: 'text/json', dataType: "json", cache: false, success: function (data) {
-        pageData = data;
-        var h = '';
-        if (location.hash.replace("#", "") != "") count = parseInt(location.hash.replace("#", ""));
-        var i = 1;
-        while (i < pageData.values.length - 1) {
-            try { if (pageData.values[i][2]) h += pageData.values[i][2]; }
-            finally { i++; }
-        }
-	h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/");
-	h = h.replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
-        $("#itemlist").html(h);
-    }
-    });
+var pageData;
+$.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DySA4HPztCP5LMxAOnBKS_OSOrks/values/\'%E7%A2%BA%E8%AA%8D%E7%94%A8%E3%83%9A%E3%83%BC%E3%82%B8%E4%B8%80%E8%A6%A7\'!A:C?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ', contentType: 'text/json', dataType: "json", cache: false, success: function (data) {
+pageData = data;
+var h = '';
+if (location.hash.replace("#", "") != "") count = parseInt(location.hash.replace("#", ""));
+var i = 1;
+while (i < pageData.values.length - 1) {
+    try { if (pageData.values[i][2]) h += pageData.values[i][2]; }
+    finally { i++; }
+}
+h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/");
+$("#itemlist").html(h);
+}});
 
 $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1lK9AwVpRnnBta7BuKkRaN_pMQFeCWYfgOz1f2U9TMfg/values/TopContents601598?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ', contentType: 'text/json', dataType: "json", cache: false,
 success: function (data) {
 var h = '' + data.values[0];
 h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/");
+h = h.replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
 $("#custom-contents>div.com").html(h);}});
 
 </script>
