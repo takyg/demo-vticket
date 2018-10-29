@@ -81,7 +81,17 @@
 #auth_msg_4 .usecount::before {
     content: "利用枚数: ";
 }
-
+#auth_msg_4 .usecount::after {
+    content: "枚";
+}
+div#auth_msg_4, div#auth_msg_3 {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    padding: 0.3em 1em;
+    margin: 0.1em;
+    border-radius: 0.4em;
+}
 #authcomp_msg_1 {
   background-image: url(/vticket/images/maru.svg);
   background-position-x: 90%;
