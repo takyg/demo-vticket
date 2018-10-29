@@ -112,8 +112,6 @@ div#auth_msg_3 {
    height: 18em;
    position: relative;
 }
-
-
 div#authcomp_msg_1::after {
    content: "確認できました";
    position: absolute;
@@ -147,4 +145,8 @@ div#authcomp_msg_1::after {
   color: white;
   padding-right:0.5em;
   margin-left: -1.5em
+}
+#authcomp_msg_1 ~ #auth_msg_1 span.service-name,
+#authcomp_msg_1 ~ #auth_msg_1 span.date {
+    background-color: #b9c6da;
 }
