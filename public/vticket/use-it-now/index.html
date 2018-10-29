@@ -17,7 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" type="text/css" href="/vticket/css/front/color.css?rev=12" media="all" />
 <link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (min-width:768px)" />
 <link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (max-width:767px)" />
-<link rel='stylesheet' type="text/css" href="/vticket/css/front/try_it_now.css" media="all" />
+<link rel='stylesheet' type="text/css" href="/vticket/css/front/use-it-now.css" media="all" />
 <script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
 <script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <link rel="shortcut icon" href="//vticket-mwg.firebaseapp.com/vticket/images/favicon.ico" />
@@ -62,7 +62,7 @@ $(function () { var comDimensionValue=$('p#user_info>span.number').length==1?$('
  		<strong>QRコードのパネルをスキャンしてください。</strong>
  	</div>
 	<div id="scan_msg_2" style="margin-top: 10px;">
-		<form id="qrForm" action="/vticket/usenow/checked.html" method="GET">
+		<form id="qrForm" action="/vticket/use-it-now/checked.html" method="GET">
 		<div id="scan_msg_3">
 			<input type="text" class="qrcode-text" id="cd" name="cd" placeholder="コード入力" autocomplete="off"><label class="qrcode-text-btn">
 				<input type=file
@@ -79,11 +79,6 @@ $(function () { var comDimensionValue=$('p#user_info>span.number').length==1?$('
 		</div>
 		<div id="scan_msg_5">
 <style>
-#scan_msg_5 .right-figure{
-	float:right;
-	margin-left: 1em;
-}
-
 #scan_msg_5 li{
     display: list-item;
     margin-left: 1.5em;
@@ -91,12 +86,10 @@ $(function () { var comDimensionValue=$('p#user_info>span.number').length==1?$('
     margin-bottom: 0.8ex;
 }
 </style>
-<img src="" width="200px" height="170px" class="right-figure">
-<strong>QRコードとは</strong><p>右のようなパネルの右上にあるような白黒の模様のことを言います。</p>
-<strong>読み取りの方法</strong><ol><li>上にある<img src="/vticket/images/qr_icon.svg" style="width:1.3em;height:1.3em;background-color:gray">部分をタップしてカメラを起動します。</li>
+<strong>読み取りの方法</strong><ul><li>上にある<img src="/vticket/images/qr_icon.svg" style="width:1.3em;height:1.3em;background-color:gray">部分をタップしてカメラを起動します。</li>
 <li>QRコードが画面の中央に大きくくっきり映るように写真を撮ってください。</li>
-<li>✔をタップします（スマホの機種によりマークが違います）</li></ol>
-読み取りに失敗する場合は、QRコードの下に書いてある5桁のコードを入力して「次へ」をタップしてください。
+<li>✔をタップします（スマホの機種によりマークが違います）</li></ul>
+カメラが起動しない、読み取りに失敗する、など上手くQRコードのスキャンが出来ない場合は、QRコードの下に書いてある5桁のコードを入力して「次へ」をタップしてください。
 			
 		</div>
 		<div id="scan_msg_6" class="text-right" style="margin-top: 10px; margin-bottom: 20px;">
