@@ -1,7 +1,17 @@
+@charset "utf-8";
+
 @media all and (min-width: 768px) {
     div#main-contents::before {
         content:"お使いの機器は「今すぐ利用」に対応していない場合があります。"
             "（テストにより表示）";
+        padding: 1em;
+        display: block;
+        width: 100%;
+        border-radius: 0.3em;
+        border: solid 2px #f66;
+        margin-bottom: 1em;
+        color: #f00;
+        background-color: #fee;
     }
 }
 
