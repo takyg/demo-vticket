@@ -20,7 +20,9 @@ body{
     margin-top: 0.2em;
 }
 #header{
-	background-size:160%;    margin-bottom: 3.5em;}
+	background-size:160%;
+    margin-bottom: 3.5em;
+}
 .navbar-inverse{
     background-color: rgba(50, 54, 65, 0.8);
     border-color: rgba(50, 54, 65, 0.8);
@@ -234,3 +236,33 @@ input.selector + label {
 @media (max-width: 609px){body {font-size:17px}}
 @media (max-width: 559px){body {font-size:16px}}
 @media (max-width: 509px){body {font-size:15px}}
+
+/* 今すぐ利用 */
+#use-it-now a::after {
+    content: "今すぐ利用";
+    margin-left: 0.5em;
+}
+#use-it-now a:hover {
+    background-color: #cfd9e0;
+    text-decoration: none;
+    border-color: #6477e0;
+    color: blue;
+}
+#use-it-now {
+    display: block;
+    position: relative;
+    height: 2.5em;
+    top: -1em;
+    right: 1.3em;
+}
+#use-it-now a {
+    position: absolute;
+    right: 0;
+    background-color: #337ab7;
+    color: white;
+    border-radius: 0.7em;
+    border-color: white;
+    border-style: solid;
+    border-width: 5px;
+    padding: 0.4em 1.2em;
+}
