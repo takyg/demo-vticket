@@ -240,7 +240,6 @@ input.selector + label {
 /* 今すぐ利用 */
 #use-it-now a::after {
     content: "今すぐ利用";
-    margin-left: 0.5em;
 }
 #use-it-now a:hover {
     background-color: #cfd9e0;
