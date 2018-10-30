@@ -24,6 +24,7 @@
   height: 1.5em;
   width: 1em;
   background: url(/vticket/images/qr_icon.png) 50% 50% no-repeat;
+  background-size: 1.8em;
   cursor: pointer;
 }
 
@@ -149,4 +150,12 @@ div#authcomp_msg_1::after {
 #authcomp_msg_1 ~ #auth_msg_1 span.service-name,
 #authcomp_msg_1 ~ #auth_msg_1 span.date {
     background-color: #b9c6da;
+}
+img.qr_icon {
+    width: 1em;
+    height: 1em;
+    background-color: gray;
+    margin-bottom: 0.2em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
 }
