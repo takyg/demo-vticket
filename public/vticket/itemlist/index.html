@@ -71,7 +71,7 @@ $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DyS
 }});
 
 var UrlGetExtHtml = 'https://us-central1-vticket-menu.cloudfunctions.net/ex-html?code=';
-$.ajax({ url: UrlGetExtHtml + '601598', contentType: 'text/json', dataType: "json", cache: false, success: function (data) {
+$.ajax({ url: UrlGetExtHtml + '601598', contentType: 'application/json', dataType: "json", cache: false, success: function (data) {
 	var h = '' + data.html;
 	h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/").replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
 	$("#custom-contents>div.com").html(h);
