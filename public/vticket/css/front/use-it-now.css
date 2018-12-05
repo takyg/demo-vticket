@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-@media all and (min-width: 768px) {
+@media (orientation:portrait) {
     div#main-contents::before {
         content:"お使いの機器は「今すぐ利用」に対応していない場合があります。"
             "（テストにより表示）";
