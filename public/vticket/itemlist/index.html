@@ -70,9 +70,9 @@ $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DyS
 	$("#itemlist").html(h);
 }});
 
-$.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1lK9AwVpRnnBta7BuKkRaN_pMQFeCWYfgOz1f2U9TMfg/values/TopContents601598?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ', contentType: 'text/json', dataType: "json", cache: false,
-success: function (data) {
-	var h = '' + data.values[0];
+var UrlGetExtHtml = 'https://us-central1-vticket-menu.cloudfunctions.net/ex-html?code=';
+$.ajax({ url: UrlGetExtHtml + '601598', contentType: 'text/json', dataType: "text", cache: false, success: function (text) {
+	var h = '' + text;
 	h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/").replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
 	$("#custom-contents>div.com").html(h);
 }});
