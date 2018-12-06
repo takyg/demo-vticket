@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('商品詳細', ~{::link})">
+</head>
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <!--/* 存在しない商品 */-->
+    <div id="main-contents" th:unless="${isDisplayItem}" th:insert="front/common/template::itemNotFound"></div>
+
+    <!--/* 存在する商品 */-->
+    <div id="main-contents" th:if="${isDisplayItem}">
+      <!--/* 商品名 */-->
+      <h2 id="item_name" th:text="${vitemData.itemName}">△◇△◇△◇</h2>
+      <p th:text="${vitemData.categoryName}" id="category_name">ダイニングとキッチン</p>
+
+      <!--/* 商品画像 */-->
+      <div id="item_image" th:with="itemImageList=${#vticketHelper.getExistingItemImageList(vitemData.itemCode)}" class="carousel slide" data-ride="carousel" data-interval="12000">
+
+        <ol class="carousel-indicators">
+          <li th:if="${#lists.size(itemImageList) gt 1}" th:each="itemImage, stat : ${itemImageList}" data-target="#item_image" th:attr="data-slide-to=${stat.index}" th:classappend="${stat.index == 0} ? 'active'"></li>
+        </ol>
+        <ul class="carousel-inner" role="listbox">
+          <th:block th:if="${#lists.size(itemImageList) gt 1}">
+            <li th:each="itemImage, stat : ${itemImageList}" class="item" th:classappend="${stat.index == 0} ? 'active'">
+              <img class="thumbnail" th:src="@{${itemImage}}" th:alt="${vitemData.itemCode} + '_' + ${stat.count}">
+            </li>
+          </th:block>
+
+          <th:block th:if="${#lists.size(itemImageList) le 1}">
+            <li class="item active">
+              <img class="thumbnail" th:alt="${vitemData.itemCode}" th:src="@{${@environment.getProperty('vticket.items.directory-path')} + ${vitemData.itemCode} + ${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).ITEM_THUMBNAIL_SUFFIX}}">
+            </li>
+          </th:block>
+        </ul>
+      </div>
+      <div id="ticket_number" th:text="__${vitemData.ticketNumber}__枚">1枚</div>
+      <!--/* 商品情報に登録されたHTML */-->
+      <div id="item_html" th:utext="${vitemData.itemHtml}">商品情報に登録された説明文・・・・・・・・・・・・・・・・・・・・・・</div>
+      <!--/* 商品区分情報に登録されたHTML */-->
+      <div id="division_html" th:utext="${vitemData.divisionItemHtml}">商品区分情報に登録されたHTML</div>
+      <div id="category_html" th:utext="${vitemData.categoryItemHtml}">
+        <!--/* 商品カテゴリー情報に登録されたHTML */-->
+        商品カテゴリー情報に登録されたHTML
+      </div>
+
+      <!--/* 商品表示区分が「一覧用」の場合は申し込むボタンエリア表示しない */-->
+      <!--/* (フェーズ2)商品区分に関係なく「一覧用」なら表示しない。
+                               商品区分が「Vチケット」で通常注文フラグがONでない場合は申し込むボタンエリア表示しない */-->
+      <th:block th:unless="${(vitemData.displayFlag == T(jp.jtbebenefit.ticket.common.constants.DisplayType).LIST.id)
+        ||
+        (vitemData.divisionId == T(jp.jtbebenefit.ticket.common.constants.DivisionType).VTICKET.id &&
+        vitemData.vticketOrderFlag != 1)}">
+        <div th:replace="common/alert::alert-warning-with-icon"></div>
+        <button th:attrappend="disabled=${isOrderable ? '': 'disabled'}" id="to_apply" th:onclick="'window.location.href = \'' + @{${T(jp.jtbebenefit.ticket.common.Path).APPLICATION}(cd=${vitemData.itemCode})} + '\''">申し込む</button>
+      </th:block>
+    </div>
+
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})">
+    <script th:src="@{/webjars/hammerjs/hammer.js}"></script>
+    <script th:src="@{/js/front/item.js}"></script>
+  </th:block>
+</body>
+</html>

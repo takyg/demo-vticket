@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('認証コード入力', ~{::link})">
+</head>
+
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="main-contents">
+
+    <!--/* エラーメッセージ */-->
+    <div th:if="!${isOrderable}" id="shop_error_msg" class="alert alert-danger">
+    	<span>利用券枚数が不足しているため、ご利用いただくことができません。</span>
+    </div>
+    <div th:if="${invalidAuthNumber}" id="shop_error_msg" class="alert alert-danger">
+    	<span>認証番号の照合に失敗しました。</span>
+    </div>
+
+    <!--/* 会員情報 */-->
+    <th:block th:object="${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__']}">
+    <div id="auth_msg_1">
+    	<h3>
+	    	<span id="auth_label_1" class="label label-primary" style="border-radius: 1.25em!important;"
+	    		th:text="*{serviceName}">サービス名</span>
+	    	<span id="auth_label_2" class="label label-primary" style="border-radius: 1.25em!important;"
+	    		th:text="${#dates.format(#dates.createNow(), 'yyyy/MM/dd')}">YYYY/MM/DD </span>
+    	</h3>
+    </div>
+    <div id="auth_msg_2" style="margin-top: 10px;">
+    	<span th:text="'会員番号： ' + *{userNumber}">会員番号</span>
+    	<br/>
+    	<span th:text="'会員名： ' + *{userName}">会員名</span>
+    	<br/>
+    	<span class="text-danger small" style="margin-left: 15px;">※会員番号は先頭14桁で確認します。</span>
+    </div>
+    <div id="auth_msg_3" class="alert alert-success" style="margin-top: 10px;">
+    	<span class="text-primary" th:text="'利用可能Vチケット： ' + *{availableTicket} + ' 枚'">利用可能Vチケット</span>
+    	<br/>
+    	<span class="text-primary" style="margin-left: 15px;" th:text="'有効期限： ' + *{#stringHelper.formatDate(periodEndDate)}">有効期限</span>
+    </div>
+    </th:block>
+
+    <!--/* メニュー内容 */-->
+    <th:block th:object="${vitemData}">
+    <div id="auth_msg_4" style="margin-top: 10px; margin-bottom: 10px;">
+    	<div style="border-color: silver!important; border: 1px solid transparent; border-radius: 4px; padding: 15px; font-size: 80%;">
+	    	<span th:text="'利用サービス： ' + *{itemName}">利用サービス</span>
+	    	<br/>
+	    	<span th:text="'必要枚数： ' + *{ticketNumber} + ' 枚'">必要枚数</span>
+    	</div>
+    </div>
+    </th:block>
+
+    <!--/* 認証コード入力(注文可能な場合のみ表示) */-->
+    <div id="auth_msg_5" th:if="${isOrderable}">
+		<!--/* 企業に設定されたHTML */-->
+		<th:block th:utext="${companyHtml}"></th:block>
+
+		<form id="authForm" th:action="@{/shop/auth}" method="POST">
+	    <div id="auth_msg_6" style="margin-top: 10px;">
+			<div class="input-group">
+				<span class="input-group-addon">認証番号<span class="text-danger">*</span></span>
+					<input type="text" class="form-control input-auth-number" name="authNumber" id="authNumber" placeholder="店舗認証番号を入力してください" maxlength="50">
+					<!--/* Enterでの送信を防ぐためダミーを設置 */-->
+					<input type="text" name="dummy" style="display:none;">
+					<input type="hidden" name="cd" th:value="${vitemData.vticketCode}">
+			</div>
+	    </div>
+		</form>
+
+	    <!--/* 送信ボタン */-->
+	    <div id="auth_msg_7" style="margin-top: 10px; margin-bottom: 10px;">
+			<div class="text-center" style="margin-top: 10px; margin-bottom: 20px;">
+				<button type="button" class="btn btn-primary" id="use_btn"
+					data-toggle="modal" data-target="#confirm">&nbsp;利用する&nbsp;</button>
+			</div>
+		</div>
+	</div>
+
+    </div>
+
+    <!--/* 確認モーダル・ダイアログ */-->
+	<div id="confirm" class="modal fade in" tabindex="-1" role="dialog">
+	  <div class="modal-dialog confirm-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header bg-primary">
+	        <h4 class="modal-title">
+	          <i class="glyphicon glyphicon-exclamation-sign"></i> ご確認
+	        </h4>
+	      </div>
+	      <div id="auth_msg_8" class="modal-body">
+			<!--/* 企業に設定されたHTML */-->
+			<th:block th:utext="${confirmHtml}"></th:block>
+	      </div>
+	      <div id="auth_msg_9" class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">戻る</button>
+	        <button class="btn btn-primary" id="shop_auth_btn">同意</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+
+<script type="text/javascript">
+// 利用するボタンクリック時
+$(function() {
+	$('#use_btn').click(function(e) {
+		if($('#authNumber').val() == '') {
+			alert('認証番号を入力してください。');
+			e.preventDefault();
+			return false;
+		}
+	});
+});
+
+// 同意ボタンクリック時
+$(function() {
+	$('#shop_auth_btn').click(function(e) {
+		$('#authForm').submit();
+	});
+});
+
+</script>
+
+</body>
+</html>

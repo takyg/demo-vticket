@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('配送先設定', ~{::link})">
+</head>
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="main-contents">
+      <h2>送付先を設定します</h2>
+      <form id="address_setting" th:action="@{${T(jp.jtbebenefit.ticket.common.Path).DELIVERYSETTING}}" th:object="${deliverysettingForm}" role="form" method="post">
+        <!--/* 宛先氏名 */-->
+        <div th:replace="common/helper/input::addon-lg(title='宛先となる氏名をご入力ください。', label=#{deliverysettingForm.deliveryName}, field='deliveryName', type='text', maxlength=20, required='required', placeholder='20文字以内となります', inputGroupClass='col-xs-12 col-sm-12')"></div>
+        <!--/* 郵便番号 */-->
+        <div th:replace="common/helper/input::addon-lg(title='ハイフンも含めて半角でご入力ください。', label=#{deliverysettingForm.deliveryPostcode}, field='deliveryPostcode', type='text', maxlength=8, required='required', placeholder='例）000-0000', inputGroupClass='col-xs-12 col-sm-12')"></div>
+        <!--/* 住所１ */-->
+        <div th:replace="common/helper/input::addon-lg(title='都道府県、市区町村、番地をご入力ください。 あふれる場合は住所２へ続きをご入力お願いします。', label=#{deliverysettingForm.deliveryAddress1}, field='deliveryAddress1', type='text', maxlength=20, required='required', placeholder='20文字以内となります', inputGroupClass='col-xs-12 col-sm-12')"></div>
+        <!--/* 住所２ */-->
+        <div th:replace="common/helper/input::addon-lg(title='建物名など住所１に入らなかった場合もこちらをご利用ください。', label=#{deliverysettingForm.deliveryAddress2}, field='deliveryAddress2', type='text', maxlength=20, placeholder='20文字以内となります', inputGroupClass='col-xs-12 col-sm-12')"></div>
+        <span class="address_tooltip"></span>
+        <!--/* 電話番号 */-->
+        <div th:replace="common/helper/input::addon-lg(title='市外局番から入力してください。ハイフンも含めて半角で。', label=#{deliverysettingForm.deliveryTel}, field='deliveryTel', type='text', maxlength=13, required='required', placeholder='例）000-0000-0000', inputGroupClass='col-xs-12 col-sm-12')"></div>
+        <!--/* メールアドレス */-->
+        <div th:replace="common/helper/input::addon-lg(title='電話での連絡が取れない際に利用するためのアドレスとなります。', label=#{deliverysettingForm.deliveryEmail}, field='deliveryEmail', type='text', maxlength=255, placeholder='', inputGroupClass='col-xs-12 col-sm-12')"></div>
+
+        <span class="annotation"></span>
+        <button type="submit" name="registor" id="registor">登録</button>
+
+        <input type="hidden" th:field="*{ref}" />
+      </form>
+
+    </div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})">
+    <script th:src="@{/js/front/jquery.jpostal.js}"></script>
+    <script th:src="@{/js/common/ticketSystemUtils.js}"></script>
+    <script th:src="@{/js/common/deliveryUtils.js}"></script>
+    <script th:src="@{/js/front/deliverysetting.js}"></script>
+  </th:block>
+</body>
+</html>

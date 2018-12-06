@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('えらべる簡易SSO画面', ~{::link})">
+</head>
+<body>
+
+  <form id="login" th:action="@{${T(jp.jtbebenefit.ticket.common.Path).SSO}}" th:object="${ssoForm}" method="post">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4"></div>
+        <div class="col-xs-12 col-sm-4 col-md-4">
+          <h2>えらべる簡易SSO画面</h2>
+          <p>入力するか選択してください</p>
+          <input type="text" class="form-control input-sm" placeholder="会員番号" th:field="*{userNumber}" />
+          <button id="sign-in" class="btn btn-sm btn-primary btn-block btn-signin" type="submit">Sign in</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <p class="text-right"><a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).BACKYARD_LOGIN}}" target="_blank">バクヤードログイン画面</a></p>
+        <p class="text-right"><a th:href="'javascript:noCookieClick();'">えらべるのCookie未設定リンク</a></p>
+        <div class="panel panel-success">
+          <div class="panel-heading text-left">登録済みの会員から選択（会員番号の上位100件を表示）</div>
+
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td>会員番号</td>
+                    <td>会員氏名</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr th:each="user : ${userList}">
+                    <td>
+                      <a th:href="'javascript:userNumberClick(\'__${user.userNumber}__\');'">[[${user.userNumber}]]</a>
+                    </td>
+                    <td>
+                      <a th:href="'javascript:userNumberClick(\'__${user.userNumber}__\');'">[[${user.userName}]]</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!--/* .table-responsive */-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" th:field="*{cookie}"/>
+  </form>
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})"></th:block>
+  <script type="text/javascript">
+      // 会員番号リンククリック
+      var userNumberClick = function(userNumber) {
+        $('[name="userNumber"]').val(userNumber);
+        $("#login").submit();
+      };
+
+      // えらべるのクッキー未設定リンク
+      var noCookieClick = function() {
+        $("#cookie").val(false);
+        $("#login").submit();
+      };
+    </script>
+
+  <!--/* footer */-->
+  <th:block th:replace="front/common/template::footer"></th:block>
+
+</body>
+</html>

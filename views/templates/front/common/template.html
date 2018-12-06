@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, links)">
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="format-detection" content="telephone=no" />
+
+<title th:text="'__${title}__ | '+ ${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__'].serviceName}">利用券システム</title>
+
+<th:block th:fragment="link">
+  <!--/* Bootstrap Core CSS */-->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+  <!--/* Icons/Glyphs */-->
+  <link rel="stylesheet" th:href="@{/webjars/font-awesome/css/font-awesome.min.css}" />
+  <!--/* Customizable CSS */-->
+  <link rel='stylesheet' media="all" th:href='@{/css/front/layout.css}' />
+  <link rel='stylesheet' media="all" th:href='@{/css/front/color.css}' />
+  <link rel='stylesheet' media="only screen and (min-width:768px)" th:href='@{/css/front/pc.css}' />
+  <link rel='stylesheet' media="only screen and (max-width:767px)" th:href='@{/css/front/sp.css}' />
+
+  <!--/* 商品ページでJQuery使用するため先に読み込む */-->
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</th:block>
+<!--/* Favicon */-->
+<link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+
+<!--/* 各View固有で読み込むリンク  */-->
+<th:block th:replace="${links} ?: ~{}" />
+
+</head>
+<body>
+  <!--/* ヘッダー */-->
+  <th:block th:fragment="header" th:object="${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__']}">
+    <!--/* 利用券枚数0の枚の場合、headerにclass付加 */-->
+    <div id="header" th:classappend="*{availableTicket} == 0 ? 'no-balance'">
+      <!--/* お知らせHTML */-->
+      <th:block th:utext="*{#vticketHelper.getInfoHtml(companyId)}"></th:block>
+      <!--/* ロゴ画像 */-->
+      <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST_INIT}}" class="site-title hidden-xs">
+        <img alt="logo" th:src="@{${@environment.getProperty('vticket.logo.directory-path')} + *{logoFilename}}">
+      </a>
+
+      <!--/* TOPメニュー */-->
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <!--/* サービス名 */-->
+            <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST_INIT}}" class="site-title visible-xs-inline"> [[*{serviceName}]] </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarEexample7">
+            <ul class="nav navbar-nav">
+              <li><a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST_INIT}}">
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> &nbsp;トップへ
+                </a></li>
+              <li><a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).HISTORY}}">
+                  <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> &nbsp;交換履歴
+                </a></li>
+            </ul>
+            <p id="user_info" class="navbar-text navbar-right">
+              <!--/* 会員氏名*/-->
+              <span class="name pop popleft" th:text="*{userName}">カタログ タロウ</span>
+              <!--/* 会員番号*/-->
+              <span class="number" th:text="*{userNumber}">12345678901234</span>
+              <!--/* 利用券残枚数*/-->
+              <span class="charge pop popright" th:text="*{availableTicket}">4</span>
+              <!--/* 利用券期限*/-->
+              <span class="expiration" th:text="*{#stringHelper.formatDate(periodEndDate)}">2019/05/31</span>
+            </p>
+          </div>
+          <!--/* /#navbarEexample7 */-->
+        </div>
+      </nav>
+    </div>
+  </th:block>
+
+  <!--/* 存在しない商品 */-->
+  <th:block th:fragment="itemNotFound">
+    <h2>お探しの商品が見つかりませんでした</h2>
+
+ご迷惑をおかけして申し訳ございません。<br>
+お探しの商品が見つかりません。すでに削除された可能性もございます。<br>
+お手数ではございますが、もう一度<a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST}}"> 一覧に戻り</a>表示されている商品をクリックすると表示できます。<br>
+    <br>
+    <!--/* 商品一覧へリンク */-->
+    <a th:replace="front/common/template::returnItemList"></a>
+    <br>
+    <br>
+恐れ入りますが、お気に入りなどに登録されている場合は削除頂く必要が有ります。
+  </th:block>
+
+  <!--/* 商品一覧へリンク */-->
+  <a th:fragment="returnItemList" th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST}}">
+    <i class="fa fa-angle-double-right"></i> 商品一覧へ
+  </a>
+
+
+  <!--/* フッター */-->
+  <div th:fragment="footer" id="footer">
+    <div id="href_top" onclick="$('html, body').animate({scrollTop:0}, 400, 'swing');">ページトップに戻る</div>
+    <span class="p_poly"> <a href="http://privacymark.jp/" target="_blank">
+        <img alt="プライバシーマーク" height="80" src="//www.jtb-benefit.co.jp/images/icn_privacy75.gif" width="75">
+      </a>
+    </span> <span class="copyright">Copyright &copy; JTB Benefit Service, inc.</span>
+  </div>
+
+  <th:block th:fragment="scripts(scripts)">
+
+    <!--/* 各View固有で読み込むJavaScript */-->
+    <th:block th:replace="${scripts} ?: ~{}" />
+  </th:block>
+</body>
+</html>

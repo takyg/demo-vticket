@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!--/* アイコン付きアラート danger */-->
+<div th:fragment="alert-error-with-icon" th:unless="${#strings.isEmpty(__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).BUSINESS_ERROR}__)}" class="form-group">
+  <div class="alert alert-danger">
+    <span th:text="${__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).BUSINESS_ERROR}__}" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  </div>
+</div>
+
+<!--/* アイコン付きアラート warning */-->
+<div th:fragment="alert-warning-with-icon" th:unless="${#strings.isEmpty(__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).BUSINESS_WARNING}__)}" class="form-group">
+  <div class="alert alert-warning">
+    <span th:text="${__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).BUSINESS_WARNING}__}" class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  </div>
+</div>
+
+<!--/* 閉じるボタン付きアラート success */-->
+<th:block th:fragment="alert-succes-with-close">
+  <div th:if="${message}" class="alert alert-success alert-dismissible fade in" role="alert">
+    <button type="button" class="close" data-dismiss="alert">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong th:text="${message}">成功</strong>
+  </div>
+</th:block>
+</html>

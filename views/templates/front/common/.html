@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>利用券システム</title>
+
+  <!--/* Bootstrap Core CSS */-->
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+  <!--/* Customizable CSS */-->
+  <link rel="stylesheet" th:href="@{/css/main.css}" />
+  <!--/* Favicon */-->
+  <link rel="shortcut icon" th:href="@{/images/favicon.ico}">
+
+</head>
+<body>
+  <th:block th:fragment="script">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  </th:block>
+</body>
+</html>

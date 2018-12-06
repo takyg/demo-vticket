@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('申し込み', ~{::link})">
+</head>
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <!--/* 存在しない商品 */-->
+    <div id="main-contents" th:unless="${isDisplayItem}" th:insert="front/common/template::itemNotFound"></div>
+
+    <!--/* 存在する商品 */-->
+    <div id="main-contents" th:if="${isDisplayItem}">
+
+      <!--/* フラッシュメッセージエリア */-->
+      <div th:replace="common/alert::alert-succes-with-close(message=${flashMessage})"></div>
+
+      <div class="panel panel-default" th:object="${applicationDto.vitemData}">
+        <div class="panel-heading">お申し込み頂く商品</div>
+        <div class="panel-body" id="application-item">
+          <!--/* 商品画像 */-->
+          <img class="thumbnail" th:alt="*{itemCode}" th:src="@{${@environment.getProperty('vticket.items.directory-path')} + *{itemCode} + ${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).ITEM_THUMBNAIL_SUFFIX}}">
+          <!--/* カテゴリ */-->
+          <span th:text="*{categoryName}" class="supplement">モノメニュー</span>
+          <!--/* 商品名 */-->
+          <span th:text="*{itemName}" class="supplement">タオルギフトセット</span>
+          <!--/* 必要枚数 */-->
+          <span th:text="必要枚数：__*{ticketNumber}__枚" class="supplement">必要枚数：2 枚</span>
+          <!--/* 商品コード */-->
+          <span th:text="商品コード：__*{itemCode}__" class="supplement">商品コード：4567890</span>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          配送先住所
+          <a th:text="${#strings.isEmpty(user.deliveryName)? '設定する' : '修正する'}" th:href="@{${T(jp.jtbebenefit.ticket.common.Path).DELIVERYSETTING}(ref=ap)}" class="setting_button">設定する</a>
+        </div>
+        <div class="panel-body">
+          <span th:unless="${user.deliveryName}" class="supplement">未設定</span>
+          <th:block th:if="${user.deliveryName}">
+            <span th:text="'__${user.deliveryName}__ 様'" class="supplement" th:remove="tag"></span><br>
+            <span th:text="'〒 __${user.deliveryPostcode}__'" class="supplement" th:remove="tag"></span><br>
+            <span th:text="${user.deliveryAddress1}" class="supplement" th:remove="tag"></span>
+            <span th:text="${user.deliveryAddress2}" class="supplement" th:remove="tag"></span><br>
+            <span th:text="${user.deliveryTel}" class="supplement" th:remove="tag"></span><br>
+            <span th:text="${user.deliveryEmail}" class="supplement" th:remove="tag"></span>
+          </th:block>
+        </div>
+      </div>
+
+
+      <div th:replace="common/alert::alert-error-with-icon"></div>
+      <div th:replace="common/alert::alert-warning-with-icon"></div>
+
+      <!--/* 申し込むボタン */-->
+      <button type="button" data-toggle="modal" data-target="#confirm-lg" th:attrappend="disabled=${isOrderable ? '': 'disabled'}" id="to_apply">申し込む</button>
+
+    </div>
+
+    <!--/* 確認モーダル・ダイアログ small */-->
+    <form th:action="@{${T(jp.jtbebenefit.ticket.common.Path).APPLICATION}}" role="form" method="post" th:if="${isDisplayItem}">
+      <th:block th:replace="front/common/modal::confirm-lg"></th:block>
+      <!--/* セッション問題に対応するため、現在の商品コードを送信する */-->
+      <input type="hidden" name="cd" th:value="${applicationDto.vitemData.itemCode}">
+     </form>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})"></th:block>
+</body>
+</html>

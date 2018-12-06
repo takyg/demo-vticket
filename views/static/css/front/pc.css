@@ -1,0 +1,115 @@
+﻿@charset "utf-8";
+
+/* PC */
+.site-title {
+	color: #fff;
+	font-size: 36px;
+    font-weight: bold;
+}
+#container{
+	width:1100px;
+}
+#header{
+	background-size: 100%;
+	margin-bottom:40px;
+    background-position-y: -50px;
+}
+#user_info {
+    width: 78%;
+}
+.navbar-inverse {
+    background-color: rgba(234, 234, 234, 0.90);
+    border-color: rgba(234, 234, 234, 0.90);
+    position: relative;
+    top: 2em;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color: #337ab7;
+}
+div#href_top {
+    padding-top: 1em;
+    padding-right: 0.6em;
+    padding-bottom: 0.6em;
+    padding-left: 1em;
+    right: 0px;
+    bottom: 0px;
+    border-top-left-radius: 1em;
+    transition-duration: 0.3s;
+}
+div#href_top:hover {
+    padding-top: 1.5em;
+    padding-right: 1.0em;
+    padding-bottom: 2.0em;
+    padding-left: 1.5em;
+    background-color: #5998dc;
+    color:white;
+}
+#itemlist .item{
+	margin-left:62px;
+    margin-bottom: 20px;
+    padding-left: 3px;
+    padding-right: 3px;
+	float:left;
+	width:200px;
+    border-radius: 5px;
+}
+#itemlist .item:hover {
+    border: 1px solid #eee;
+    background-color: #eee;
+}
+h2#item_name {
+    word-break: keep-all;
+    text-indent: -1em;
+    margin-left: 1em;
+}
+#itemlist .item:nth-child(4n+1){
+	margin-left:0px;
+}
+#itemlist .item .thumbnail{
+	width:190px;
+	height:190px;
+    margin-bottom: 0.2em;
+}
+#itemlist .item .title{
+    width: 190px;
+    height: 50px;
+}
+#itemlist .item .value {
+   width: 50px;
+   position: absolute;
+   margin-top: 160px;
+   margin-left: 20px;
+   height: 20px;
+   font-size: 14px;
+}
+
+/* バナー */
+#com-banner a.banner {
+    margin: 15px;
+    float: left;
+}
+#com-banner img.banner {
+    margin: 0px;
+    width: 300px;
+    height: 120px;
+}
+#com-banner a.banner:after {
+    content: attr(caption);
+    display: block;
+    width: 300px;
+    margin-top: 5px;
+    font-size: smaller;
+}
+
+/* テーブル表記 */
+table.flat th {
+    background-color: #ccc;
+}
+table.flat td[colspan] {
+    text-align: center;
+}
+
+/* 外部サイト遷移ダイアログ内SPコメント */
+#confirm-jump comment {
+    display: none;
+}

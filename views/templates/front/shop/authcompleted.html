@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('利用確認済み', ~{::link})">
+</head>
+
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="main-contents">
+
+    <!--/* 利用確認済み情報 */-->
+    <div id="authcomp_msg_1" class="alert alert-info">
+    	<span class="text-info">利用確認が完了しました。</span>
+    	<br/>
+    	<h1>
+	    	<span id="authcomp_label_1" class="label label-primary" style="border-radius: 1.25em!important;"
+	    		th:text="'利用店舗: ' + ${shopName}">利用店舗</span>
+    	</h1>
+    	<h1>
+	    	<span id="authcomp_label_2" class="label label-primary" style="border-radius: 1.25em!important;"
+	    		th:text="'認証日時: ' + ${authDate}">認証日時</span>
+    	</h1>
+    </div>
+
+    <!--/* 会員情報 */-->
+    <th:block th:object="${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__']}">
+    <div id="auth_msg_1">
+    	<h3>
+	    	<span id="auth_label_1" class="label label-primary" style="border-radius: 1.25em!important;"
+	    		th:text="*{serviceName}">サービス名</span>
+	    	<span id="auth_label_2" class="label label-primary" style="border-radius: 1.25em!important;"
+	    		th:text="${#dates.format(#dates.createNow(), 'yyyy/MM/dd')}">YYYY/MM/DD </span>
+    	</h3>
+    </div>
+    <div id="auth_msg_2" style="margin-top: 10px;">
+    	<span th:text="'会員番号： ' + *{userNumber}">会員番号</span>
+    	<br/>
+    	<span th:text="'会員名： ' + *{userName}">会員名</span>
+    	<br/>
+    	<span class="text-danger small" style="margin-left: 15px;">※会員番号は先頭14桁で確認します。</span>
+    </div>
+    <div id="auth_msg_3" class="alert alert-success" style="margin-top: 10px;">
+    	<span class="text-primary" th:text="'利用可能Vチケット： ' + *{availableTicket} + ' 枚'">利用可能Vチケット</span>
+    	<br/>
+    	<span class="text-primary" style="margin-left: 15px;" th:text="'有効期限： ' + *{#stringHelper.formatDate(periodEndDate)}">有効期限</span>
+    </div>
+    </th:block>
+
+    <!--/* メニュー内容 */-->
+    <th:block th:object="${vitemData}">
+    <div id="auth_msg_4" style="margin-top: 10px; margin-bottom: 10px;">
+    	<div style="border-color: silver!important; border: 1px solid transparent; border-radius: 4px; padding: 15px; font-size: 80%;">
+	    	<span th:text="'利用サービス： ' + *{itemName}">利用サービス</span>
+	    	<br/>
+	    	<span th:text="'必要枚数： ' + *{ticketNumber} + ' 枚'">必要枚数</span>
+    	</div>
+    </div>
+    </th:block>
+
+    <!--/* 戻るボタン */-->
+    <div id="authcomp_msg_2" style="margin-top: 10px; margin-bottom: 10px;">
+		<div class="text-center" style="margin-top: 10px; margin-bottom: 20px;">
+			<a th:href="@{/itemlist}"><button type="submit" class="btn btn-primary">&nbsp;トップへ戻る&nbsp;</button></a>
+		</div>
+	</div>
+
+    </div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+</body>
+</html>

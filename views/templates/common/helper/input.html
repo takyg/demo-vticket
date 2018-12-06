@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!--/* for custom input-group-addon */-->
+<div th:id="'formdiv_' + ${field}" th:fragment="addon-lg" class="form-group" th:classappend="${#fields.hasErrors('__${field}__')}? 'has-error'">
+  <div class="input-group input-group-lg has-clear" th:classappend="${inputGroupClass}">
+    <label th:title="${title}" th:if="${label}" class="input-group-addon" th:classappend="${labelClass}" th:for="${field}">
+      <span th:if="${required}" class="label label-danger">必須</span>
+      [[${label}]]
+    </label>
+    <span class="control-clear hidden"></span>
+    <input th:type="${type}" class="form-control" th:classappend="${inputClass}" th:field="*{__${field}__}" th:placeholder="${placeholder}" th:maxlength="${maxlength}" th:style="${style}" />
+  </div>
+  <th:block th:if="${#fields.hasErrors('__${field}__')}" th:each="error : ${#fields.detailedErrors('__${field}__')}">
+    <span class="help-block">
+      <i class="fa fa-exclamation" aria-hidden="true"></i>
+      <span th:text="${error.message}" th:remove="tag">Error</span>
+    </span>
+  </th:block>
+</div>
+
+</html>

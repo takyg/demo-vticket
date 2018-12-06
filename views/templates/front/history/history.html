@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('交換履歴', ~{::link})">
+</head>
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="main-contents">
+
+      <!--/* 未使用の利用券一覧  */-->
+      <!--/* 商品区分がコトまたはVチケット通常注文 & 申請ステータスが「利用済み」「キャンセル」以外の場合表示  */-->
+      <div th:if="${isDisplayUnusedTicket}" class="panel panel-default">
+        <div class="panel-heading">未利用の利用券一覧</div>
+        <div class="panel-body">取り寄せた利用券のうち、まだご利用情報が未登録のものを一覧しています。
+            <span id="unused-tickets-comment">&nbsp;</span>
+        <attention>取り寄せた利用券は、コト「旧利用券提出型」メニューであれば、共通利用券として有効期限までに1回限り利用することができます。（ただし、一部のメニューを除きます）</attention>
+        <attention>モノ「旧利用券送付型」メニューへの変更は出来ません。</attention></div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>お申し込み時の商品<span class="pc-only">名（ID）</span></th>
+              <th>出荷日</th>
+            </tr>
+          </thead>
+          <th:block th:object="${T(jp.jtbebenefit.ticket.common.constants.ApplyStatus)}">
+            <tbody th:each="item, stat : ${vapplyDataList}">
+              <!--/* 未使用のチケット一覧は商品区分がコトまたはVチケット通常注文の場合出力対象 存在しない場合はエリアごと非表示 */-->
+              <th:block th:if="${item.divisionId == T(jp.jtbebenefit.ticket.common.constants.DivisionType).KOTO.id
+                || (item.divisionId == T(jp.jtbebenefit.ticket.common.constants.DivisionType).VTICKET.id && item.authDate == null)}">
+                <!--/* 申請ステータスが「申請中」、「処理中」、「出荷済み」の場合に表示 */-->
+                <tr th:if="${item.status} == *{APPLYING.id} or ${item.status} == *{PROCESSING.id} or ${item.status} == *{SHIPPED.id}">
+                  <!--/* 申請ID */-->
+                  <th th:text="${item.applyId}">2</th>
+                  <!--/* 商品名 */-->
+                  <td>
+                    <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEM}(cd=${item.itemCode})}">[[${item.itemName}]]</a>
+                  </td>
+                  <!--/* 出荷日 */-->
+                  <td th:text="${item.shippingDate} ? ${#stringHelper.formatDate(item.shippingDate)}: '出荷待ち'" class="nobr">2017/8/3</td>
+                </tr>
+              </th:block>
+            </tbody>
+          </th:block>
+        </table>
+      </div>
+
+      <!--/* 交換履歴 */-->
+      <div class="panel panel-default">
+        <div class="panel-heading">交換履歴</div>
+        <div th:if="${#lists.size(vapplyDataList) == 0}" class="panel-body">
+          交換履歴はまだありません。<br>
+          <!--/* 商品一覧へリンク */-->
+          <a th:replace="front/common/template::returnItemList"></a>
+        </div>
+        <div th:if="${#lists.size(vapplyDataList) != 0}" class="panel-body">これまでにお申込みを受けたもの全て（上記未利用分も含まれます）が一覧されます。
+            <span id="orders-comment">&nbsp;</span>
+        </div>
+        <table class="table" id="history" th:if="${#lists.size(vapplyDataList) != 0}">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>お申込み内容</th>
+            </tr>
+          </thead>
+          <tbody>
+            <th:block th:each="item, stat : ${vapplyDataList}"
+                th:with="appClassName = ${item.divisionId == T(jp.jtbebenefit.ticket.common.constants.DivisionType).VTICKET.id && item.authDate == null ? 'app_info_normal' : 'app_info'}">
+              <!--/* 商品区分に応じたclassを設定する */-->
+              <tr th:id="'application-__${stat.index}__'" th:class="${'itemclass-' + item.divisionId}">
+                <!--/* 利用日が入力済みの場合、利用時情報を表示するためrowspanを行う */-->
+                <th th:rowspan="${#vticketHelper.isDisplayUsedInfo(item)}? '2'" th:text="${item.applyId}">5</th>
+                <td>
+                  <!--/* 商品詳細リンク */-->
+                  <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEM}(cd=${item.itemCode})}">
+                    <!--/* 商品画像 */-->
+                    <img class="thumbnail" th:alt="${item.itemCode}" th:src="@{${@environment.getProperty('vticket.items.directory-path')} + ${item.itemCode} + ${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).ITEM_THUMBNAIL_SUFFIX}}">
+                  </a>
+                  <!--/* 商品名 */-->
+                  <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEM}(cd=${item.itemCode})}">
+                    <span th:text="${item.itemName}" th:remove="tag">焼肉の田村＜共通券＞</span>
+                  </a>
+                  <!--/* 必要利用券枚数  / 商品コード */-->
+                  <span class="supplement" th:text="${'枚数：__${item.ticketNumber}__ / ID：__${item.itemCode}__'}">枚数：1 / ID：1111111</span>
+                  <ul>
+                    <li class="common_info applydate"><span class="fieldname">お申込み日付</span><span class="fieldvalue" th:text="${#stringHelper.formatDate(item.applyDate)}">2017/8/6</span></li>
+                    <li class="common_info status"><span class="fieldname">ステータス</span><span class="fieldvalue" th:text="${#enumHelper.getApplyStatusName(item.status)}">受付待ち</span></li>
+                    <li th:if="${item.shippingDate}" th:class="${appClassName}">
+                    <span class="fieldname">出荷日</span><span class="fieldvalue" th:text="${#stringHelper.formatDate(item.shippingDate)}">2017/9/1</span></li>
+                    <!--/* 出荷日が入力済 かつ 配送手段入力済 */-->
+                    <li th:if="${item.shippingDate} and !${#strings.isEmpty(item.shippingMethod)}" th:class="${appClassName}"><span class="fieldname">配送手段</span><span th:text="${item.shippingMethod}" class="fieldvalue delivery_method">佐川急便</span></li>
+                    <!--/* 出荷日が入力済 かつ 送り状番号入力済 */-->
+                    <li th:if="${item.shippingDate} and !${#strings.isEmpty(item.shippingNo)}" th:class="${appClassName}"><span class="fieldname">送り状番号</span><span th:text="${item.shippingNo}" class="fieldvalue shipping_number">123456789</span><span class="comment shipping_number">送り状番号欄に番号が記載されている場合は、各配送会社サイトにてお荷物の状況を確認できます</span></li>
+                  </ul>
+                </td>
+              </tr>
+
+              <!--/* 商品区分がコトまたはVチケット、 且つ利用日が入力済の場合利用情報表示 */-->
+              <tr th:if="${(item.divisionId == T(jp.jtbebenefit.ticket.common.constants.DivisionType).KOTO.id)
+               || (item.divisionId == T(jp.jtbebenefit.ticket.common.constants.DivisionType).VTICKET.id)} and ${item.useDate}" th:class="'itemclass-__${item.divisionId}__'">
+                <td colspan="2">
+                  ご利用情報
+                  <ul>
+                    <li class="common_info usedate"><span class="fieldname">利用日</span><span th:text="${#stringHelper.formatDate(item.useDate)}" class="fieldvalue">2017/8/13</span></li>
+                    <!--/* 利用日が入力済 かつ 利用時商品コード入力済 */-->
+                    <li th:if="${item.useDate} and !${#strings.isEmpty(item.useItemName)}" th:class="${appClassName}"><span class="fieldname">利用店舗</span><a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEM}(cd=${item.useItemCode})}"><span th:text="${item.useItemName}" class="fieldvalue item_name">どこそこ焼肉</span></a></li>
+                    <!--/* 利用日が入力済 かつ 利用店舗入力済 */-->
+                    <li th:if="${item.useDate} and !${#strings.isEmpty(item.useShop)}" class="common_info useshop"><span class="fieldname">備考</span><span th:text="${item.useShop}" class="fieldvalue remarks">特別な情報がある場合のみ</span></li>
+                  </ul>
+                </td>
+              </tr>
+            </th:block>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})"></th:block>
+</body>
+</html>

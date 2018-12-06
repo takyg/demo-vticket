@@ -1,0 +1,238 @@
+﻿@charset "utf-8";
+
+/* SP */
+.pc-only {
+    display: none;
+}
+body{
+	font-size: 20px;
+}
+.site-title {
+	color: #fff;
+	font-size: 30px;
+    font-weight: bold;
+}
+#container{
+    width:100%;
+    min-width: 380px;
+}
+.control-clear {
+    margin-top: 0.2em;
+}
+#header{
+	background-size:160%;
+    margin-bottom: 3.5em;
+}
+.navbar-inverse{
+    background-color: rgba(50, 54, 65, 0.8);
+    border-color: rgba(50, 54, 65, 0.8);
+    position: relative;
+    top: 0px;
+}
+.navbar-inverse .navbar-toggle{
+    margin-top: 15px;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a{
+    color: #eee;
+}
+#search{width:90%}
+nav .only-one {
+    display: none;
+}
+#categoly_search ul li:first-child {
+    float: none;
+    display: table;
+}
+#content{width:100%}
+
+#title{width:100%}
+#list{width:100%}
+#footer{width:100%}
+div#href_top {
+    width: 3.5em;
+    height: 3.5em;
+    white-space: nowrap;
+    left: 0;
+    bottom: 0;
+    font-size: larger;
+    border-top-right-radius: 3.5em;
+    padding: 0.8em;
+    overflow: hidden;
+    padding-top: 1em;
+    background-color: rgba(190, 221, 255, 0.5);
+}
+div#href_top::before {
+    content: "\f062";
+    font-family: FontAwesome;
+    font-size: larger;
+    margin-right: 1.5em;
+}
+#itemlist .item .thumbnail{
+	width:320px;
+	height:320px;
+}
+#itemlist .item .title{
+    width:100%;
+    margin-top: -10px;
+    border-bottom: 7px solid #eee;
+    padding-bottom: 2em;
+}
+#itemlist .item .value {
+    width: 100px;
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 20px;
+    height: 30px;
+    font-size: 20px;
+    z-index: 10;
+}
+/* 商品詳細画面 */
+#item_html dd img {
+    width: 98%;
+}
+#item_html {
+    clear: both;
+}
+#item_image img {
+    width: auto;
+    height: auto;
+    min-width: 300px;
+    min-height: 300px;
+}
+/* 配送先設定画面 */
+#address_setting label{
+	width: auto;
+}
+#address_setting label > .label {
+    font-size: 12px;
+    margin-right: 2px;
+}
+/* バナー */
+#com-banner img.banner {
+    width: 90%;
+    margin: 5%;
+}
+
+/* ヘッダー残枚数表記 */
+.collapse:not([aria-expanded=true]) {
+    display: block;
+    height: 1px;
+}
+.collapse:not([aria-expanded=true]) ul,
+.collapse:not([aria-expanded=true]) p#user_info span {
+    display: none;
+}
+.collapse:not([aria-expanded=true]):after
+ {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    height: 2.5em;
+    background: rgba(204, 204, 204, 0.2);;
+    left: 0;
+    top:3.4em
+}
+.collapse:not([aria-expanded=true]) p#user_info span.pop {
+    display: inline;
+    height: 2em;
+    text-align: right;
+    word-break: keep-all;
+    overflow: visible;
+}
+.collapse:not([aria-expanded=true]) p#user_info span.popright {
+    width: 30%;
+    right: 2em;
+}
+.collapse:not([aria-expanded=true]) p#user_info span.popleft {
+    width: 50%;
+    left: 1.5em;
+}
+
+/* レスポンシブテーブル表記 ＜Class flat＞*/
+table.flat th,table.flat td {
+	display: block;
+}
+table.flat th {
+    margin-top: 1.5em;
+}
+table.flat th:before {
+    content: "\f097";
+    font-family: FontAwesome;
+    position: relative;
+    left: -0.5em;
+    color: maroon;
+}
+table.flat thead {
+	display: none;
+}
+table.flat td:before {
+	display: block;
+	font-weight: bold;
+    position: relative;
+    padding-top: 5px;
+    padding-right: 20px;
+    padding-bottom: 7px;
+    padding-left: 15px;
+    background-color: #ccc;
+    left: -8px;
+    top: -8px;
+    width: auto;
+    border-bottom-right-radius: 8px;
+}
+table.flat td:before {content: none}
+table.flat td.field-1:before {content: "項目１"}
+table.flat td.field-2:before {content: "項目２"}
+table.flat td.field-3:before {content: "項目３"}
+table.flat td.koto:before {
+    color: #fff;
+    background-color: #8e3e87;
+    content: "コトメニュー"}
+table.flat td.mono:before {
+    color: #fff;
+    background-color: #258b6d;
+    content: "モノメニュー"}
+table.flat td.address:before {content: "\f041  住所"; font-family: FontAwesome}
+table.flat td.phone-no:before {content: "\f095  電話番号"; font-family: FontAwesome}
+table.flat td.sales-time:before {content: "\f017  営業時間"; font-family: FontAwesome}
+table.flat td.lunch-sales-time:before {content: "\f017  ランチ営業時間"; font-family: FontAwesome}
+table.flat td.dinner-sales-time:before {content: "\f017  ディナー営業時間"; font-family: FontAwesome}
+table.flat td.closing-day:before {content: "\f273  休業日"; font-family: FontAwesome}
+table.flat td.excluded-day:before {content: "\f273  設定除外日"; font-family: FontAwesome}
+table.flat td.note:before {content: "\f044  備考"; font-family: FontAwesome}
+
+/* タブメニュー */
+label.tab {
+    width: 92%;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+/* 受け付け期間外 */
+li.item.out-of-term:before {
+    margin-left: 165px;
+    margin-top: 40px;
+}
+
+/* 商品内選択肢 */
+input.selector + label {
+    width: 100%;
+}
+
+/* 比較的小さな画面の場合 */
+@media (max-width:599px) {
+    #header {
+        margin-bottom: 4em;
+    }
+}
+/* 小さな画面の場合の段階的なフォントサイズ */
+@media (max-width: 499px){.site-title {font-size:24px}}
+@media (max-width: 459px){.site-title {font-size:23px}}
+@media (max-width: 419px){.site-title {font-size:22px}}
+
+@media (max-width: 649px){body {font-size:18px}}
+@media (max-width: 609px){body {font-size:17px}}
+@media (max-width: 559px){body {font-size:16px}}
+@media (max-width: 509px){body {font-size:15px}}

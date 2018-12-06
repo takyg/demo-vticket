@@ -1,0 +1,239 @@
+/* ナビメニューの折りたたむサイズを最適化 */
+@media (max-width: 1120px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+        float: left;
+    }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+body > .container {
+  padding: 0px 0px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+button.custom {
+	margin-right: 50px;
+	width: 180px !important;
+}
+
+/* flatpickrカレンダーのクリアボタン */
+button.calendar-clear {
+	background: #1bbc9b;
+	color: #ffffff;
+}
+
+/* Table関連 */
+.table-hover tbody tr:hover > td {
+  background-color: #337ab7;
+  color: #ffffff;
+}
+
+.table > thead > tr > th {
+  background-color: #e6e6e6;
+}
+
+/* 関連在庫Tableの背景色 */
+.item-stock-table {
+  background-color: #cbf9c336!important;
+}
+
+/* 画像アップのTDの背景 */
+.file-upload-cell {
+	background-color: silver;
+}
+
+/* TDの高さを中央揃えにする */
+.vmiddle {
+	vertical-align: middle!important;
+}
+
+/* textareaのリサイズを縦のみに限定 */
+textarea {
+	resize: vertical;
+}
+
+.file-upload {
+	display:inline-block;
+}
+/* 画像アップロード */
+.file-upload input {
+	display: none;
+}
+.file-upload img {
+	cursor: pointer;
+	pointer-events: none;
+}
+
+/* navbar Brandのカラー */
+.navbar-inverse .navbar-brand {
+  color: #ffffff;
+}
+
+/* navbar テキストカラー */
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+.navbar-inverse .navbar-text {
+  color: #ffffff;
+}
+
+/* navbar hover,focus時のテキストカラー */
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+  color: #337ab7;
+  background-color: transparent;
+}
+
+/* navbar active設定時のカラー */
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>.active>a:focus,
+.navbar-inverse .navbar-nav>.active>a:hover {
+  color: #337ab7;
+  background-color: #c3ede7;
+}
+
+.navbar {
+	margin-bottom: 0px!important;
+}
+
+/* ユーザ管理：ロック状態 ボタンを表示するエリア */
+.customRadioButton {
+  position       : relative;            /* 親要素が基点       */
+  margin         : auto;                /* 中央寄せ           */
+  width          : 300px;               /* ボタンの横幅       */
+}
+
+ /* ユーザ管理：ロック状態 ラジオボタン */
+.customRadioButton input[type="radio"] {
+  display        : none;            /* チェックボックス非表示 */
+}
+
+ /* ユーザ管理：ロック状態 ラジオボタンのラベル（標準） */
+.customRadioButton label {
+  display        : block;               /* ボックス要素に変更 */
+  position       : absolute;            /* 親要素からの相対位置*/
+  top            : 0;                   /* 標準表示位置(上)   */
+  bottom         : 0;                   /* 標準表示位置(下)   */
+  left           : 0;                   /* 標準表示位置(左)   */
+  right          : 0;                   /* 標準表示位置(右)   */
+  text-align     : center;              /* 文字位置は中央     */
+  font-weight    : bold;                /* 太字               */
+  border         : 2px solid #ccc;      /* 枠線(一旦四方向)   */
+}
+
+ /* ユーザ管理：ロック状態 ON側のラジオボタンのラベル（標準） */
+.customRadioButton #customRadioOn + label {
+  right          : 50%;                 /* 右端を中央に変更   */
+  border-radius  : 6px 0 0 6px;         /* 角丸(左側の上下)   */
+  background     : #eee;                /* 背景               */
+  color          : #666;                /* 文字色             */
+  border-right   : none;                /* 枠線の右側を消す   */
+}
+
+ /* ユーザ管理：ロック状態 ON側のラジオボタンのラベル（ONのとき） */
+.customRadioButton #customRadioOn:checked +label {
+                                        /* 背景グラデーション */
+  background     : #d9534f;
+  color          : #fff;                /* 文字色             */
+  text-shadow    : 1px 1px 1px #333;    /* 文字に影を付ける   */
+}
+
+ /* ユーザ管理：ロック状態 OFF側のラジオボタンのラベル（標準） */
+.customRadioButton #customRadioOff + label {
+  left           : 50%;                 /* 左端を中央に変更   */
+  border-radius  : 0 6px 6px 0;         /* 角丸(右側の上下)   */
+  background     : #eee;                /* 背景               */
+  color          : #666;                /* 文字色             */
+  border-left    : none;                /* 枠線の左側を消す   */
+}
+
+ /* ユーザ管理：ロック状態 OFF側のラジオボタンのラベル（OFFのとき）  */
+.customRadioButton #customRadioOff:checked +label {
+                                        /* 背景グラデーション */
+  background     : linear-gradient(175deg, #ccc, #999, #ccc);
+  color          : #fff;                /* 文字色             */
+  text-shadow    : 1px 1px 1px #333;    /* 文字に影を付ける   */
+}
+
+/* Handsontable表示欄 */
+.handsonbody {
+  width : 100%;
+  height : 400px;
+  overflow : hidden;
+  background-color : #f5f5f5;
+}
+
+/* Copyright */
+body::before {
+    content: "Copyright © JTB Benefit Service, inc.";
+    border-radius: 0.8em;
+    background-color: #f4f4f4;
+    color: #777;
+    padding: 0.3em 2em;
+    position: fixed;
+    bottom: 1.5em;
+    right: 30%;
+    left: 30%;
+    font-size: x-small;
+    white-space: pre;
+    overflow: hidden;
+    z-index: -10;
+}

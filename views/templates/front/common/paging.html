@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!--/* ページング数が0、またはパラメーターより渡されたページング番号が全体のページング数より大きい場合は非表示 */-->
+<th:block th:if="${page != null and page.totalPages != 0 and ((page.totalPages) gt page.number)}" th:fragment='paginationbar'>
+  <nav class="paging">
+
+    <!--/* 1ページのみの場合はページング部分非表示 */-->
+    <ul th:classappend="${page.totalPages == 1} ? 'only-one'" class="pagination pagination-lg">
+
+      <li th:class="${page.first} ? 'disabled':''"><a th:if="${page.first}" aria-label="前のページへ">
+          <span aria-hidden="true">«</span>
+        </a> <a th:if="${not page.first}" th:href="'javascript:pageClick(0);'" href="#" aria-label="前のページへ">
+          <span aria-hidden="true">«</span>
+        </a></li>
+      <li th:each='i : ${#numbers.sequence(0, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : ''"><a th:if='${i}==${page.number}'>
+          <span th:text='${i+1}'>1</span>
+        </a> <a th:if='${i}!=${page.number}' th:href="'javascript:pageClick(__${i}__);'">
+          <span th:text='${i+1}'>1</span>
+        </a></li>
+
+      <li th:class="${page.last} ? 'disabled':''"><a th:if="${page.last}" aria-label="次のページへ">
+          <span aria-hidden="true">»</span>
+        </a> <a th:if="${not page.last}" th:href="'javascript:pageClick(__${page.totalPages}__-1);'" href="#" aria-label="次のページへ">
+          <span aria-hidden="true">»</span>
+        </a></li>
+    </ul>
+    <p>[[${page.totalElements}]] 件が該当し、[[${page.number * page.size + 1}]] ～ [[${page.number * page.size + page.numberOfElements}]] 件目を表示しています。</p>
+  </nav>
+</th:block>
+</html>

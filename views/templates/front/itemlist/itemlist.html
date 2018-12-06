@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('商品検索', ~{::link})">
+</head>
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="custom-contents">
+      <!--/* 企業情報に設定された一覧用HTML */-->
+      <div class="com">
+        <th:block th:object="${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__']}">
+          <th:block th:utext="*{#vticketHelper.getCompanyHtml(companyId)}"></th:block>
+        </th:block>
+      </div>
+      <div class="kind">
+        <!--/* 区分情報に設定された一覧用HTML */-->
+        <th:block th:utext="${#vticketHelper.getItemDivisionHtml(itemlistForm.menu)}"></th:block>
+      </div>
+      <div class="category">
+        <!--/* カテゴリ情報に設定された一覧用HTML */-->
+        <th:block th:utext="${#vticketHelper.getItemCategoryHtml(itemlistForm.c)}"></th:block>
+      </div>
+    </div>
+
+    <!--/* 絞り込み検索フォーム */-->
+    <form id="search-form" th:action="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST}}" th:object="${itemlistForm}" role="form" method="get">
+
+      <!--/* 検索エリア */-->
+      <div id="search" class="clearfix">
+        <div id="categoly_search" class="condition-block clear-all col-sm-6">
+          <p>メニューを選択</p>
+
+          <!--/* メニュー */-->
+          <ul class="nav nav-pills range-sw">
+            <li role="presentation" th:classappend="!${T(jp.jtbebenefit.ticket.common.constants.DivisionType).contains(__${itemlistForm.menu}__)} ?'active'"><a href="javascript:divisionClick('');">全てのメニュー</a></li>
+            <th:block th:object="${T(jp.jtbebenefit.ticket.common.constants.DivisionType)}">
+              <li id="mono" role="presentation" th:classappend="${itemlistForm.menu} == *{MONO.id} ?'active'"><a th:href="'javascript:divisionClick(__*{MONO.id}__);'">
+                  <i class="fa fa-gift"></i> モノメニュー
+                </a></li>
+              <li th:if="!${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__'].qrscanFlag}"
+                  id="koto" role="presentation" th:classappend="${itemlistForm.menu} == *{KOTO.id} ?'active'"><a th:href="'javascript:divisionClick(__*{KOTO.id}__);'">
+                  <i class="fa fa-cutlery"></i> コトメニュー
+                </a></li>
+              <li th:if="${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__'].qrscanFlag}"
+                  id="vticket" role="presentation" th:classappend="${itemlistForm.menu} == *{VTICKET.id} ?'active'"><a th:href="'javascript:divisionClick(__*{VTICKET.id}__);'">
+                  <i class="fa fa-cutlery"></i> Vチケットメニュー
+                </a></li>
+            </th:block>
+          </ul>
+        </div>
+
+        <th:block th:with="searchMaxNum=${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__'].searchMaxNum}">
+          <!--/* 検索最大枚数が1枚超の場合表示 */-->
+          <th:block th:if="${searchMaxNum gt 1}">
+            <div id="charge_search" class="condition-block">
+              <p>枚数で絞り込み</p>
+              <!--/* 利用券枚数絞り込み検索 */-->
+              <ul class="nav nav-pills">
+                <!--/*
+                class="toggle-sw" 未選択状態（ONが一つも無い場合）
+                class="toggle-sw active" ON状態
+                class="toggle-sw invalid" OFF状態
+             */-->
+                <th:block th:each="seq : ${#numbers.sequence(1, __${searchMaxNum}__)}">
+                  <li th:id="'ticketNumber-__${seq}__'" class="toggle-sw" role="presentation" th:classappend="${#strings.isEmpty(itemlistForm.t) ? '' : #stringHelper.existsValueByComma(itemlistForm.t, seq) ? 'active' : 'invalid'}"><a th:text="'__${seq}__枚用'" th:href="'javascript:ticketClick(__${seq}__);'">1枚用</a></li>
+                </th:block>
+              </ul>
+            </div>
+          </th:block>
+        </th:block>
+
+        <div id="keyword_search" class="condition-block col-sm-7">
+          <p>キーワードで絞り込み</p>
+          <div class="form-group">
+            <div class="input-group input-group-lg has-clear">
+              <input th:field="*{k}" type="text" class="form-control" maxlength="255">
+              <span class="control-clear right-button hidden"></span>
+              <span class="input-group-btn">
+                <button id="search-btn" class="btn btn-default" type="submit">
+                  <i class="fa fa-search"></i>検索
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!--/* paging */-->
+        <nav th:replace="front/common/paging::paginationbar"></nav>
+      </div>
+
+      <!--/* 選択された商品区分 */-->
+      <input type="hidden" th:field="*{menu}" />
+      <!--/* 選択されたページ */-->
+      <input type="hidden" id="page" name="page" th:value="${page}" />
+      <!--/* 選択された絞り込み利用券枚数 */-->
+      <input type="hidden" th:field="*{t}" />
+      <!--/* 選択されたカテゴリ */-->
+      <input type="hidden" th:field="*{c}" />
+
+    </form>
+    <!--/* /#search-form */-->
+
+    <div id="main-contents" class="clearfix">
+      <div id="list">
+
+        <!--/* 検索結果0件 */-->
+        <th:block th:if="${#lists.isEmpty(vitemDataList)}">
+          <h4>条件に合う商品が見つかりませんでした。</h4>
+          <ul class="default">
+            <li><a th:href="'javascript:clearTicketClick();'">
+                <i class="fa fa-angle-double-right"></i> 枚数指定をやめる
+              </a></li>
+            <li><a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEMLIST}}">
+                <i class="fa fa-angle-double-right"></i> すべての商品を見る
+              </a></li>
+          </ul>
+        など、条件を変えてもう一度検索してみてください。
+          </th:block>
+
+        <ul id="itemlist">
+          <!--/* 商品一覧 */-->
+          <th:block th:each="item, stat : ${vitemDataList}">
+            <!--/* 申請期間外の場合class追加 */-->
+            <li class="item" th:classappend="${!#dateHelper.isBetween(now, item.applyStartDate, item.applyEndDate)} ?'out-of-term'" th:id="${item.itemCode}">
+              <!--/* 商品詳細リンク */-->
+              <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).ITEM}(cd=${item.itemCode})}">
+                <!--/* 必要利用券枚数 */-->
+                <span th:class="'value label label-primary use__${item.ticketNumber}__'" th:text="__${item.ticketNumber}__枚">1枚</span>
+                  <!--/* 商品画像 */-->
+                  <img class="thumbnail" th:alt="${item.itemCode}" th:src="@{${@environment.getProperty('vticket.items.directory-path')} + ${item.itemCode} + ${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).ITEM_THUMBNAIL_SUFFIX}}">
+                <!--/* 商品名 */-->
+                <p class="title" th:text="${item.itemName}">玩具の神様® かわいい ピヨピヨ アヒルちゃん 100個 セット お風呂でプカプカ</p>
+              </a>
+            </li>
+          </th:block>
+
+        </ul>
+      </div>
+
+      <!--/* paging */-->
+      <nav th:replace="front/common/paging::paginationbar"></nav>
+
+    </div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})">
+    <script th:src="@{/js/common/ticketSystemUtils.js}"></script>
+    <script th:src="@{/js/front/itemlist.js}"></script>
+  </th:block>
+</body>
+</html>

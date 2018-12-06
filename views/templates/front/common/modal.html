@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<!--/* 確認モーダル・ダイアログ small */-->
+<div th:fragment='confirm-lg' id="confirm-lg" class="modal fade in" tabindex="-1" role="dialog">
+  <div class="modal-dialog confirm-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-primary">
+        <h4 class="modal-title">
+          <i class="glyphicon glyphicon-question-sign"></i> お申込みを確定します、よろしいですか
+        </h4>
+      </div>
+      <div class="modal-body">選択されている商品、お届け先に間違いが無いかご確認の上「はい、申し込みます」をクリックすると、お申込みを確定します。</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
+        <button class="btn btn-primary">はい、申し込みます</button>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

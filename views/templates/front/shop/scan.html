@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('今すぐ利用', ~{::link})">
+</head>
+
+	<!-- QR Code -->
+	<script th:src="@{/js/front/qr_packed.js}"></script>
+
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="main-contents">
+
+    <!--/* エラーメッセージ */-->
+    <div th:if="${error}" id="shop_error_msg" class="alert alert-danger">
+		<span>メニューコードが間違っている、<br/>
+		もしくは対象メニューが現在ご利用いただけない可能性があります。<br/>
+		店頭パネルの内容を確認し、再度お試しください。
+    	</span>
+    </div>
+
+    <!--/* 今すぐ利用画面  */-->
+ 	<div id="scan_msg_1">
+ 		<strong>QRコードのパネルをスキャンしてください。</strong>
+ 	</div>
+	<div id="scan_msg_2" style="margin-top: 10px;">
+		<form id="qrForm" th:action="@{/shop/scan}" method="POST">
+		<div id="scan_msg_3">
+			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
+				<input type=file
+					 accept="image/*"
+					 capture=environment
+					 onclick="return showQRIntro();"
+					 onchange="openQRCamera(this);"
+					 tabindex=-1>
+			</label>
+		</div>
+		<div  id="scan_msg_4" style="margin-top: 10px; margin-bottom: 10px;">
+			<span>スキャン出来ると次の画面へ進みます。<br>
+			手入力の場合は「次へ」ボタンをタップしてください。</span>
+		</div>
+		<div id="scan_msg_5">
+			<!--/* 企業に設定されたHTML */-->
+			<th:block th:utext="${companyHtml}"></th:block>
+		</div>
+		<div id="scan_msg_6" class="text-right" style="margin-top: 10px; margin-bottom: 20px;">
+			<button type="submit" class="btn btn-primary" id="btn_next">&nbsp;次へ&nbsp;</button>
+		</div>
+		</form>
+	</div>
+
+    </div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+<script type="text/javascript">
+//2値化しない通常のQRコード読み取り
+function openQRCamera(node) {
+	var reader = new FileReader();
+
+	// アップロードされたファイルの読み込み完了後に呼ばれる
+	reader.onload = function() {
+		node.value = "";
+
+		// qrcode.decode後に呼ばれるコールバック
+		qrcode.callback = function(res) {
+			if(res instanceof Error) {
+				alert("QRコードの読み取りに失敗しました。\nカメラの中央にQRコードを表示し、再度撮影してください。");
+			} else {
+				console.log('res: ' + res);
+				node.parentNode.previousElementSibling.value = res;
+				// resが空でなければFormをsubmitする
+				if(res != null && res != '') {
+					$('#qrForm').submit();
+				}
+			}
+		};
+
+		// 読み込んだファイルをQRコードリーダーへ渡す
+		qrcode.decode(reader.result);
+	};
+
+	// アップロードされたファイルの読み込み
+	reader.readAsDataURL(node.files[0]);
+}
+
+// カメラ起動時にメッセージを表示する
+function showQRIntro() {
+  return confirm("カメラを使用してQRコードを撮影します。");
+}
+
+// 次へボタンクリック時
+$(function() {
+	$('#btn_next').click(function(e) {
+		if($('#cd').val() == '') {
+			alert('店頭メニューコードが未入力です。');
+			e.preventDefault();
+			return false;
+		}
+	});
+});
+</script>
+
+</body>
+</html>

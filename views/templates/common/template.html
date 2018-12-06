@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title, links)">
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="format-detection" content="telephone=no" />
+<title th:text="'__${title}__'">利用券システム</title>
+<th:block th:replace="front/common/template::link"></th:block>
+</head>
+<body>
+
+  <!--/* Google Analytics */-->
+  <th:block th:fragment="ga" th:if="${@environment.acceptsProfiles('prod, stg')}">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108807669-1"></script>
+    <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+
+          gtag('config', 'UA-108807669-1');
+        </script>
+  </th:block>
+
+</body>
+
+</html>

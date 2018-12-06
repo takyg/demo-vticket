@@ -1,0 +1,297 @@
+@charset "utf-8";
+
+a.site-title:hover{
+    color: #fff;
+}
+#header{
+    background-color: #343b6d;
+}
+.navbar-inverse .navbar-text {
+    color: #000;
+}
+#footer{
+    background-color: #eaeaea;
+}
+div#href_top {
+    background-color: rgba(190, 221, 255, 0.9);
+    color: rgba(68, 68, 68, 0.8);
+}
+#user_info{
+	background-color: rgba(255, 255, 255, 0.8);
+}
+#user_info .number:before,#user_info .charge:before,#user_info .charge:after,#user_info .expiration:before{
+    color: #666;
+}
+#header .gnav{
+	background-color: rgba(255, 255, 255, 0.9);
+}
+li.separater:before{
+	color: #000;
+}
+/* （商品一覧） */
+#itemlist .item {
+    background-color: rgba(255, 255, 255, 0.9);/* 商品一覧でタイトルが50文字を超える場合の対策 */
+    border-color: #fff;
+}
+#itemlist .item p{
+    color: #333;
+}
+/* (トグルボタン) */
+li.toggle-sw.active:before {
+    background-color: #539ad8;
+}
+li.toggle-sw.invalid:before {
+    background-color: #ddd;
+}
+li.toggle-sw.invalid>a {
+    background-color: #eee;
+}
+/*（スライド表示付きボタン）*/
+.range-sw:after {
+    border-color: #fff;
+    background-color: #539ad8;
+}
+.range-sw > li.active:after {
+    background-color: #337ab7;
+}
+/* (条件パネル) */
+.condition-block > p {
+    color: #777;
+}
+
+/* 商品詳細画面 */
+#item_image {
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+button {
+   color: white;
+   background-color: rgb(51, 122, 183);
+}
+button[disabled] {
+   background-color: #aaa;
+}
+dd {
+    border-bottom-color: #ccc;
+    border-left-color: #ccc;
+    border-right-color: #ccc;
+    color: #414141;
+}
+dt {
+    border-top-color: #444;
+    border-left-color: #444;
+    border-right-color: #444;
+    background-color: #444;
+    color: azure;
+}
+#item_html dd > a {
+    color: white;
+    background-color: #337ab7;
+}
+#item_html dt.contents, #item_html dt.selector {
+    background-color: #fff;
+    color: #414141;
+}
+#item_html dl > .description {
+    color: #444;
+}
+
+.carousel-indicators li {
+    border-color: #337ab7;
+}
+#ticket_number {
+    border-color: #ccc;
+}
+
+/* 配送先設定画面 */
+input:focus::placeholder {
+    color:#ddd;
+}
+span.annotation {
+    color: #bf7336;
+    background-color: #fffedc;
+    border-color: #d4bda8;
+}
+
+/* 申請画面 / 履歴画面 */
+span.fieldname, span.fieldvalue {
+    border-color: #ccc;
+}
+span.fieldvalue {
+    background-color: #fff;
+}
+span.fieldname {
+    background-color: #ddd;
+}
+span.comment.shipping_number {
+    color: #18ad77;
+}
+#history span.supplement, #application-item span.supplement{
+    color: #666;
+}
+#history li a span.fieldvalue {
+    border-color: #ccc;
+}
+/* Ｑ＆Ａと説明ページ共通 */
+header.simple {
+    background-color: #255278;
+}
+header.simple a {
+    color: White;
+}
+ol#qa li>label.open, ol#qa li>span{
+    border-color: #ddd;
+}
+ol#qa li>label.open{
+    background-color: #eee;
+}
+ol#qa li>span{
+    background-color: #fff;
+}
+ol#qa address {
+    border-color: #ccc;
+    background-color: #f8f8f8;
+}
+ol#qa input.open:hover ~ span, ol#qa input.open ~ span:hover {
+    background-color: #ffffe0;
+    box-shadow: inset 0px 3px 15px 3px white;
+}
+ol#qa input.open:checked ~ span {
+    background-color: #fffcbd;
+    box-shadow: none;
+}
+
+/* Ｑ＆Ａと説明ページ（タブ分け） */
+ input#group-goods:checked ~ label.tab[group=goods]
+,input#group-ticket:checked ~ label.tab[group=ticket]
+,input#group-service:checked ~ label.tab[group=service]
+,input#group-other:checked ~ label.tab[group=other]
+{
+    background-color: #337ab7;
+    color: #fff;
+}
+label.tab {
+    background-color: #a4d1f6;
+}
+attention {
+    color: #d00;
+}
+comment {
+    color: #1c8816;
+}
+/* テーブル表記 */
+table.horizontal th {
+    background-color: #ccc;
+}
+table.flat td, table.horizontal td {
+    background-color: #eee;
+}
+table.flat th.blank,table.horizontal th.blank {
+    background-color: #fff;
+}
+table.horizontal tbody th {
+    background-color: rgba(200,200,200,0.8);
+}
+table.flat th.mono, table.flat th.koto {
+    color: #fff;
+}
+table.flat th.mono {
+    background-color: #258b6d;
+}
+table.flat th.koto {
+    background-color: #8e3e87;
+}
+
+/* ポップアップ */
+div.address .address-content {
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+div.address .address-title {
+    background-color: #fff4f4;
+    border-color: #ccc;
+}
+
+/* アイコン */
+.icon {
+    color: #414141;
+    background-color: #abee94;
+}
+dd.icon {
+    color: #489a51;
+    background-color: inherit;
+}
+.no-reservation-required{
+    color: #00BCAE;
+    background-color: #e8fce9;
+    border-color: #00BCAE;
+}
+.reservation-required{
+    color: #D52425;
+    background-color: #ffded2;
+    border-color: #D52425;
+}
+.early-discount{
+    color: #ffffff;
+    background-color: #fc6830;
+    border-color: #fc6830;
+}
+.limited-time-menu {
+   color: #159FDE;
+   background-color: #d8e7ef;
+   border-color: #159FDE;
+}
+
+
+/* 受け付け期間外 */
+li.item.out-of-term:before {
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+}
+li.item.out-of-term img {
+/*    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
+*/}
+/* 交換済み */
+div#header.no-balance:before {
+    color: red;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+/* 商品内選択肢 */
+input.selector + label .selector-sw::before {
+    background-color: #aaa;
+}
+input.selector + label .selector-sw::after {
+    background-color: #ccc;
+}
+input.selector:checked + label .selector-sw::before {
+   background-color: #81abff;
+}
+input.selector:checked + label .selector-sw::after {
+   background-color: #1a6dca;
+}
+input.selector:checked + label {
+   background-color: rgba(255, 164, 144, 0.25);
+}
+
+ul.select-one li.selected {
+    background-color: #ddeefc;
+}
+ul.select-one li {
+    background-color: #337ab7;
+}
+ul.select-one li a {
+    color: white;
+}
+ul.select-one li.selected a {
+    color: black;
+}
+/* 同意確認窓 */
+#Pharmaceutical_sales_confirmation_matter{
+    border-color:#888;
+    background-color:#f8f8f8;
+}

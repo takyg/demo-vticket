@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="front/common/template::head('申し込み完了', ~{::link})">
+</head>
+<body>
+  <!--/* Google Analytics */-->
+  <th:block th:replace="common/template::ga"></th:block>
+
+  <div id="container">
+
+    <!--/* header */-->
+    <th:block th:replace="front/common/template::header"></th:block>
+
+    <div id="main-contents">
+      <h2>ご利用ありがとうございました。</h2>
+      <p>
+        お申込みの状態は、画面上部の「
+        <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).HISTORY}}">
+          <span class="glyphicon glyphicon-list-alt"></span>
+          &nbsp;交換履歴
+        </a>
+        」メニューからいつでもご確認いただけます。<br> <br>
+        <a th:href="@{${T(jp.jtbebenefit.ticket.common.Path).HISTORY}}">
+          <i class="fa fa-angle-double-right"></i> 交換履歴へ
+        </a>
+      </p>
+    </div>
+
+    <!--/* footer */-->
+    <th:block th:replace="front/common/template::footer"></th:block>
+  </div>
+  <!--/* /#container */-->
+
+  <!--/* Script */-->
+  <th:block th:replace="front/common/template::scripts(~{::script})"></th:block>
+</body>
+</html>
