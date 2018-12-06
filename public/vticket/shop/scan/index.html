@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="format-detection" content="telephone=no" />
+
+<title>今すぐ利用 | 通常利用</title>
+
+
+  
+  <link rel="stylesheet" href="/vticket/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+  
+  <link rel="stylesheet" href="/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+  
+  <link rel='stylesheet' media="all" href='/vticket/css/front/layout.css' />
+  <link rel='stylesheet' media="all" href='/vticket/css/front/color.css' />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (orientation:landscape)" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (orientation:portrait)" />
+
+  
+  <script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
+  <script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+
+
+
+<link rel="shortcut icon" href="/vticket/images/favicon.ico">
+
+
+
+
+</head>
+
+	<!-- QR Code -->
+	<script src="/vticket/js/front/qr_packed.js"></script>
+
+<style type="text/css">
+.qrcode-text-btn {
+  display: inline-block;
+  height: 1.5em;
+  width: 1em;
+  background: url(/vticket/images/qr_icon.svg) 50% 50% no-repeat;
+  cursor: pointer;
+}
+
+.qrcode-text {
+  display: inline!important;
+}
+
+.qrcode-text-btn > input[type=file] {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.qrcode-text + .qrcode-text-btn {
+  width: 1.7em;
+  margin-left: -2.5em;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+</style>
+
+<body>
+  
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108807669-1"></script>
+    <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() {
+            dataLayer.push(arguments);
+          }
+          gtag('js', new Date());
+
+          gtag('config', 'UA-108807669-1');
+        </script>
+  
+
+  <div id="container">
+
+    
+    
+    
+    <div id="header">
+      
+      <style type="text/css">@import url(/vticket/info/osaka/css/osaka.css?v=1.5)</style>
+      
+      <a href="/vticket/itemlist" class="site-title hidden-xs">
+        <img alt="logo" src="/vticket/images/logo/for_test.png">
+      </a>
+
+      
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample7">
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            
+            <a href="/vticket/itemlist" class="site-title visible-xs-inline"> 通常利用 </a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarEexample7">
+            <ul class="nav navbar-nav">
+              <li><a href="/vticket/itemlist">
+                  <span class="glyphicon glyphicon-home" aria-hidden="true"></span> &nbsp;トップへ
+                </a></li>
+              <li><a href="/vticket/history">
+                  <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> &nbsp;交換履歴
+                </a></li>
+            </ul>
+            <p id="user_info" class="navbar-text navbar-right">
+              
+              <span class="name pop popleft">えらべる 太郎</span>
+              
+              <span class="number">00001099999900</span>
+              
+              <span class="charge pop popright">1</span>
+              
+              <span class="expiration">2019/03/31</span>
+            </p>
+          </div>
+          
+        </div>
+      </nav>
+    </div>
+  
+
+    <div id="main-contents">
+
+    
+    
+
+    
+ 	<div id="scan_msg_1">
+ 		<strong>QRコードのパネルをスキャンしてください。</strong>
+ 	</div>
+	<div id="scan_msg_2" style="margin-top: 10px;">
+		<form id="qrForm" action="/vticket/shop/scan" method="GET">
+		<div id="scan_msg_3">
+			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
+				<input type=file
+					 accept="image/*"
+					 capture=environment
+					 onclick="return showQRIntro();"
+					 onchange="openQRCamera(this);"
+					 tabindex=-1>
+			</label>
+		</div>
+		<div  id="scan_msg_4" style="margin-top: 10px; margin-bottom: 10px;">
+			<span>スキャン出来ると次の画面へ進みます。<br>
+			手入力の場合は「次へ」ボタンをタップしてください。</span>
+		</div>
+		<div id="scan_msg_5">
+			
+			DBに登録された今すぐ利用画面HTML
+		</div>
+		<div id="scan_msg_6" class="text-right" style="margin-top: 10px; margin-bottom: 20px;">
+			<button type="submit" class="btn btn-primary" id="btn_next">&nbsp;次へ&nbsp;</button>
+		</div>
+		</form>
+	</div>
+
+    </div>
+
+    
+    <div id="footer">
+    <div id="href_top" onclick="$('html, body').animate({scrollTop:0}, 400, 'swing');">ページトップに戻る</div>
+    <span class="p_poly"> <a href="http://privacymark.jp/" target="_blank">
+        <img alt="プライバシーマーク" height="80" src="//www.jtb-benefit.co.jp/images/icn_privacy75.gif" width="75">
+      </a>
+    </span> <span class="copyright">Copyright &copy; JTB Benefit Service, inc.</span>
+  </div>
+  </div>
+  
+
+<script type="text/javascript">
+//2値化しない通常のQRコード読み取り
+function openQRCamera(node) {
+	var reader = new FileReader();
+
+	// アップロードされたファイルの読み込み完了後に呼ばれる
+	reader.onload = function() {
+		node.value = "";
+
+		// qrcode.decode後に呼ばれるコールバック
+		qrcode.callback = function(res) {
+			if(res instanceof Error) {
+				alert("QRコードの読み取りに失敗しました。\nカメラの中央にQRコードを表示し、再度撮影してください。");
+			} else {
+				console.log('res: ' + res);
+				node.parentNode.previousElementSibling.value = res;
+				// resが空でなければFormをsubmitする
+				if(res != null && res != '') {
+					$('#qrForm').submit();
+				}
+			}
+		};
+
+		// 読み込んだファイルをQRコードリーダーへ渡す
+		qrcode.decode(reader.result);
+	};
+
+	// アップロードされたファイルの読み込み
+	reader.readAsDataURL(node.files[0]);
+}
+
+// カメラ起動時にメッセージを表示する
+function showQRIntro() {
+  return confirm("カメラを使用してQRコードを撮影します。");
+}
+
+// 次へボタンクリック時
+$(function() {
+	$('#btn_next').click(function(e) {
+		if($('#cd').val() == '') {
+			alert('店頭メニューコードが未入力です。');
+			e.preventDefault();
+			return false;
+		}
+	});
+});
+</script>
+
+</body>
+</html>

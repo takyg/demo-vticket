@@ -15,8 +15,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="stylesheet" href="/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="/vticket/css/front/layout.css?rev=12" media="all" />
 <link rel="stylesheet" type="text/css" href="/vticket/css/front/color.css?rev=12" media="all" />
-<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (min-width: 768px)" />
-<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (max-width:767px)" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (orientation:landscape)" />
+<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (orientation:portrait)" />
 <script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
 <script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
 <link rel="shortcut icon" href="//vticket-mwg.firebaseapp.com/vticket/images/favicon.ico" />
@@ -70,16 +70,16 @@ $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DyS
 	$("#itemlist").html(h);
 }});
 
-$.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1lK9AwVpRnnBta7BuKkRaN_pMQFeCWYfgOz1f2U9TMfg/values/TopContents601598?dateTimeRenderOption=FORMATTED_STRING&majorDimension=DIMENSION_UNSPECIFIED&valueRenderOption=FORMATTED_VALUE&key=AIzaSyB8h5WVX3F7ve-rw2jjBysWhOKJw4FP-nQ', contentType: 'text/json', dataType: "json", cache: false,
-success: function (data) {
-	var h = '' + data.values[0];
+var UrlGetExtHtml = 'https://us-central1-vticket-menu.cloudfunctions.net/ex-html?code=';
+$.ajax({ url: UrlGetExtHtml + '601598', contentType: 'application/json', dataType: "json", cache: false, success: function (data) {
+	var h = '' + data.html;
 	h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/").replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
 	$("#custom-contents>div.com").html(h);
 }});
 
 </script>
 
-<div id="use-it-now"><a href="/vticket/use-it-now/"></a></div>
+<div id="use-it-now"><a href="/vticket/shop/scan/"></a></div>
 
     <div id="custom-contents"><div class="com">コンテンツ取得中…</div>
         <div class="kind" ><!-- 区分情報に設定された一覧用HTML --></div>
