@@ -76,7 +76,7 @@ dd {
     border-left-color: #ccc;
     border-right-color: #ccc;
     color: #414141;
-} 
+}
 dt {
     border-top-color: #444;
     border-left-color: #444;
@@ -285,10 +285,10 @@ ul.select-one li {
     background-color: #337ab7;
 }
 ul.select-one li a {
-    color: white; 
+    color: white;
 }
 ul.select-one li.selected a {
-    color: black; 
+    color: black;
 }
 /* 同意確認窓 */
 #Pharmaceutical_sales_confirmation_matter{

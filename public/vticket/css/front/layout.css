@@ -205,7 +205,7 @@ li.separater:before{
 #search > .navbar-form{
     width: 90%;
 }
-#search > .navbar-form .form-control{ 
+#search > .navbar-form .form-control{
     width: 400px;
 }
 #search > ul{
@@ -321,7 +321,7 @@ li.toggle-sw.active, li.toggle-sw.invalid {
     margin-top: 15px;
     padding-right: 15px;
     padding-left: 15px;
-} 
+}
 /* 商品詳細画面 */
 #item_image {
     margin-top: 10px;
@@ -554,6 +554,36 @@ a.setting_button::before {
     font-family: FontAwesome;
     margin-right: 0.3em;
 }
+
+/* 履歴画面(フェーズ2追加)ここから */
+#history .itemclass-9 .app_info {
+    display:none;
+}
+
+#history .itemclass-9 .common_info.useshop .fieldname::before {
+    content:"店舗名および";
+}
+#history tr[id|=application] > td::before {
+    display:block;
+    font-size:xx-small;
+    font-weight:normal;
+    padding:1ex;
+    border-radius:1.4ex;
+    float:right;
+}
+#history tr[id|=application].itemclass-1 > td::before {
+    content:"モノメニュー";
+    background-color:#9eceac;
+}
+#history tr[id|=application].itemclass-5 > td::before {
+    content:"コトメニュー";
+    background-color:#ecb8f1;
+}
+#history tr[id|=application].itemclass-9 > td::before {
+    content:"ＱＲコード対応コトメニュー";
+    background-color:#d9e5f5;
+}
+/* 履歴画面(フェーズ2追加)ここまで */
 
 /* Ｑ＆Ａと説明ページ共通 */
 header.simple {
@@ -832,7 +862,8 @@ input.selector + label {
     padding-right: 1em;
     padding-left: 2.5em;
     cursor: pointer;
-    transition: background-color 0.5s;    width: auto;
+    transition: background-color 0.5s;
+    width: auto;
     text-indent: -2em;
     border-radius: 2px;
 }
@@ -844,21 +875,23 @@ input.selector + label .selector-sw {
 input.selector + label .selector-sw::before {
     content: "";
     display: block;
-    position: absolute; 
+    position: absolute;
     width: 26px;
     height: 10px;
     margin-top: 0;
-    border-radius: 5px; 
-    transition: 0.5s;}
+    border-radius: 5px;
+    transition: 0.5s;
+}
 input.selector + label .selector-sw::after {
     content: "";
     display: block;
-    position: absolute; 
+    position: absolute;
     width: 18px;
     height: 18px;
     margin-top: -4px;
-    border-radius: 9px; 
-    transition: 0.5s;}
+    border-radius: 9px;
+    transition: 0.5s;
+}
 input.selector:checked + label .selector-sw::after {
     margin-left: 10px;
 }
@@ -922,4 +955,37 @@ ul.select-one li {
 #Pharmaceutical_sales_confirmation_matter h4 {
     text-indent: -2em;
     margin-left: 2em;
+}
+
+/* 今すぐ利用画面(フェーズ2) */
+.qrcode-text-btn {
+  display: inline-block;
+  height: 1.5em;
+  width: 1em;
+  background: url(/vticket/css/qr_icon.svg) 50% 50% no-repeat;
+  cursor: pointer;
+}
+
+.qrcode-text {
+  display: inline!important;
+  font-size: 16px;
+}
+
+.qrcode-text-btn > input[type=file] {
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.qrcode-text + .qrcode-text-btn {
+  width: 1.7em;
+  margin-left: -2.5em;
+  vertical-align: middle;
+  margin-bottom: 0;
+}
+
+.input-auth-number {
+	font-size: 16px;
 }
