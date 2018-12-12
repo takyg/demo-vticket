@@ -7,7 +7,7 @@
 	"dependencies": {
 		"ejs": "^2.5.6",
 		"express": "^4.15.2",
-		"request": "2.61.0",
+		"request": ">=2.68.0",
 		"thymeleaf": ">=0.5.0"
 	}
 }
