@@ -32,7 +32,6 @@
 	<div id="scan_msg_2" style="margin-top: 10px;">
 		<form id="qrForm" th:action="@{/shop/scan}" method="POST">
 		<div id="scan_msg_3">
-			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
 				<input type=file
 					 accept="image/*"
 					 capture=environment
@@ -50,6 +49,7 @@
 			<th:block th:utext="${companyHtml}"></th:block>
 		</div>
 		<div id="scan_msg_6" class="text-right" style="margin-top: 10px; margin-bottom: 20px;">
+			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
 			<button type="submit" class="btn btn-primary" id="btn_next">&nbsp;次へ&nbsp;</button>
 		</div>
 		</form>
