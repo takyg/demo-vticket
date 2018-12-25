@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="front/common/template::head('今すぐ利用', ~{::link})">
+	<base href="https://jbf-test.herokuapp.com">
+	<meta charset="utf-8" />
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NJN5ZX4');</script>
+	<!-- End Google Tag Manager -->
+	<meta name="viewport" content="width=device-width, shrink-to-fit=yes" />
+	<title>デモサイト | 大阪わくわくプラン2018</title>
+	<link rel="stylesheet" href="/vticket/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/layout.css?rev=12" media="all" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/color.css?rev=12" media="all" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (orientation:landscape)" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (orientation:portrait)" />
+	<script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="//vticket-mwg.firebaseapp.com/vticket/images/favicon.ico" />
+	<style>
+	.qrcode-text{
+		height: 34px;
+		padding: 6px 12px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	.qrcode-text-btn {
+		height: 3em;
+		width: 3em;
+	}
+	</style>
 </head>
 
 	<!-- QR Code -->
@@ -19,20 +51,20 @@
 
     <!--/* エラーメッセージ */-->
     <div th:if="${error}" id="shop_error_msg" class="alert alert-danger">
-		<span>メニューコードが間違っている、<br/>
-		もしくは対象メニューが現在ご利用いただけない可能性があります。<br/>
-		店頭パネルの内容を確認し、再度お試しください。
+		<span>メニューコードが間違っているか、
+		対象のメニューが現在ご利用いただけない可能性があります。<br/>
+		読み込んだパネルの内容を確認し、再度お試しください。
     	</span>
     </div>
 
     <!--/* 今すぐ利用画面  */-->
  	<div id="scan_msg_1">
- 		<strong>QRコードのパネルをスキャンしてください。</strong>
+ 		<strong>下のマークをタップしてＱＲコードをスキャンしてください。</strong>
  	</div>
 	<div id="scan_msg_2" style="margin-top: 10px;">
-		<form id="qrForm" th:action="@{/shop/scan}" method="POST">
+		<form id="qrForm" th:action="@{/shop/scan}" method="POST" class="form-inline">
 		<div id="scan_msg_3">
-			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
+			<label class=qrcode-text-btn>
 				<input type=file
 					 accept="image/*"
 					 capture=environment
@@ -50,6 +82,7 @@
 			<th:block th:utext="${companyHtml}"></th:block>
 		</div>
 		<div id="scan_msg_6" class="text-right" style="margin-top: 10px; margin-bottom: 20px;">
+			<input type="text" class="qrcode-text" id="cd" name="cd" placeholder="パネルに記載のコード" autocomplete="off" maxlength="50">
 			<button type="submit" class="btn btn-primary" id="btn_next">&nbsp;次へ&nbsp;</button>
 		</div>
 		</form>

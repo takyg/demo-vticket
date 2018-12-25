@@ -1,6 +1,39 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="front/common/template::head('認証コード入力', ~{::link})">
+	<base href="https://jbf-test.herokuapp.com">
+	<meta charset="utf-8" />
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NJN5ZX4');</script>
+	<!-- End Google Tag Manager -->
+	<meta name="viewport" content="width=device-width, shrink-to-fit=yes" />
+	<title>デモサイト | 大阪わくわくプラン2018</title>
+	<link rel="stylesheet" href="/vticket/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/layout.css?rev=12" media="all" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/color.css?rev=12" media="all" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (orientation:landscape)" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (orientation:portrait)" />
+	<script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="//vticket-mwg.firebaseapp.com/vticket/images/favicon.ico" />
+<style>
+#auth_msg_2, #auth_msg_4 {
+	padding: 0.2em 0.8em;
+}
+#auth_msg_2 {
+	background-image: url(/vticket/images/user_card_m.png);
+	background-size: 70px;
+	background-position-x: 90%;
+	background-position-y: 50%;
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+}
+</style>
 </head>
 
 <body>
@@ -27,22 +60,20 @@
     <div id="auth_msg_1">
     	<h3>
 	    	<span id="auth_label_1" class="label label-primary" style="border-radius: 1.25em!important;"
-	    		th:text="*{serviceName}">サービス名</span>
+	    		th:text="*{serviceName}">〇〇△△◇◇プラン 2001</span>
 	    	<span id="auth_label_2" class="label label-primary" style="border-radius: 1.25em!important;"
-	    		th:text="${#dates.format(#dates.createNow(), 'yyyy/MM/dd')}">YYYY/MM/DD </span>
+	    		th:text="${#dates.format(#dates.createNow(), 'yyyy/MM/dd')}">2001/08/01 </span>
     	</h3>
     </div>
     <div id="auth_msg_2" style="margin-top: 10px;">
-    	<span th:text="'会員番号： ' + *{userNumber}">会員番号</span>
-    	<br/>
-    	<span th:text="'会員名： ' + *{userName}">会員名</span>
-    	<br/>
-    	<span class="text-danger small" style="margin-left: 15px;">※会員番号は先頭14桁で確認します。</span>
+    	<span th:text="'会員番号： ' + *{userNumber}">会員番号： 99900099999900</span>
+    	<span th:text="'会員名： ' + *{userName}">会員名： カタログ　タロウ</span>
+    	<attention>※会員番号は先頭14桁で確認します。</attention>
     </div>
     <div id="auth_msg_3" class="alert alert-success" style="margin-top: 10px;">
-    	<span class="text-primary" th:text="'利用可能Vチケット： ' + *{availableTicket} + ' 枚'">利用可能Vチケット</span>
+    	<span class="text-primary" th:text="'利用可能枚数： ' + *{availableTicket} + ' 枚'">利用可能枚数： 1 枚</span>
     	<br/>
-    	<span class="text-primary" style="margin-left: 15px;" th:text="'有効期限： ' + *{#stringHelper.formatDate(periodEndDate)}">有効期限</span>
+    	<span class="text-primary" style="margin-left: 15px;" th:text="'有効期限： ' + *{#stringHelper.formatDate(periodEndDate)}">有効期限： 2002/5/31</span>
     </div>
     </th:block>
 
@@ -50,9 +81,9 @@
     <th:block th:object="${vitemData}">
     <div id="auth_msg_4" style="margin-top: 10px; margin-bottom: 10px;">
     	<div style="border-color: silver!important; border: 1px solid transparent; border-radius: 4px; padding: 15px; font-size: 80%;">
-	    	<span th:text="'利用サービス： ' + *{itemName}">利用サービス</span>
+	    	<span th:text="'利用するメニュー名： ' + *{itemName}">利用するメニュー名： 999 メニューの名称メニューの名称メニューの名称</span>
 	    	<br/>
-	    	<span th:text="'必要枚数： ' + *{ticketNumber} + ' 枚'">必要枚数</span>
+	    	<span th:text="'必要な枚数： ' + *{ticketNumber} + ' 枚'">必要な枚数： 1 枚</span>
     	</div>
     </div>
     </th:block>

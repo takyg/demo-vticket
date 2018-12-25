@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="front/common/template::head('商品検索', ~{::link})">
+	<base href="https://jbf-test.herokuapp.com">
+	<meta charset="utf-8" />
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-NJN5ZX4');</script>
+	<!-- End Google Tag Manager -->
+	<meta name="viewport" content="width=device-width, shrink-to-fit=yes" />
+	<title>デモサイト | 大阪わくわくプラン2018</title>
+	<link rel="stylesheet" href="/vticket/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/vticket/webjars/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/layout.css?rev=12" media="all" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/color.css?rev=12" media="all" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/pc.css?rev=12" media="only screen and (orientation:landscape)" />
+	<link rel="stylesheet" type="text/css" href="/vticket/css/front/sp.css?rev=12" media="only screen and (orientation:portrait)" />
+	<script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/vticket/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+	<link rel="shortcut icon" href="//vticket-mwg.firebaseapp.com/vticket/images/favicon.ico" />
 </head>
 <body>
   <!--/* Google Analytics */-->
@@ -49,7 +69,7 @@
                 </a></li>
               <li th:if="${session['__${T(jp.jtbebenefit.ticket.common.constants.TicketSystemConst).FRONT_INFO_SESSION}__'].qrscanFlag}"
                   id="vticket" role="presentation" th:classappend="${itemlistForm.menu} == *{VTICKET.id} ?'active'"><a th:href="'javascript:divisionClick(__*{VTICKET.id}__);'">
-                  <i class="fa fa-cutlery"></i> Vチケットメニュー
+                  <i class="fa fa-cutlery"></i> コトメニュー
                 </a></li>
             </th:block>
           </ul>
