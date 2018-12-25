@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width" />
 <meta name="format-detection" content="telephone=no" />
 
-<title>今すぐ利用 | 大阪わくわくプラン2019</title>
+<title>今すぐ利用 | こうべフリーチョイスプラン</title>
 
 
   
@@ -43,11 +43,9 @@
   background: url(/vticket/images/qr_icon.svg) 50% 50% no-repeat;
   cursor: pointer;
 }
-
 .qrcode-text {
   display: inline!important;
 }
-
 .qrcode-text-btn > input[type=file] {
   position: absolute;
   overflow: hidden;
@@ -55,14 +53,12 @@
   height: 1px;
   opacity: 0;
 }
-
 .qrcode-text + .qrcode-text-btn {
   width: 1.7em;
   margin-left: -2.5em;
   vertical-align: middle;
   margin-bottom: 0;
 }
-
 </style>
 
 <body>
@@ -75,7 +71,6 @@
             dataLayer.push(arguments);
           }
           gtag('js', new Date());
-
           gtag('config', 'UA-108807669-1');
         </script>
   
@@ -87,12 +82,11 @@
     
     <div id="header">
       
-      <style type="text/css">@import url(/vticket/info/osaka/css/osaka.css?v=1.5)</style>
+      <style type="text/css">@import url(/vticket/info/kobe/css/kobe.css?v=1.5)</style>
       
       <a href="/vticket/itemlist" class="site-title hidden-xs">
         <img alt="logo" src="/vticket/images/logo/for_test.png">
       </a>
-
       
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -101,9 +95,8 @@
               <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
             </button>
             
-            <a href="/vticket/itemlist" class="site-title visible-xs-inline"> 大阪わくわくプラン2019 </a>
+            <a href="/vticket/itemlist" class="site-title visible-xs-inline"> こうべフリーチョイスプラン </a>
           </div>
-
           <div class="collapse navbar-collapse" id="navbarEexample7">
             <ul class="nav navbar-nav">
               <li><a href="/vticket/itemlist">
@@ -115,7 +108,7 @@
             </ul>
             <p id="user_info" class="navbar-text navbar-right">
               
-              <span class="name pop popleft">大阪　太郎</span>
+              <span class="name pop popleft">神戸 花子</span>
               
               <span class="number">00001099999900</span>
               
@@ -129,12 +122,9 @@
       </nav>
     </div>
   
-
     <div id="main-contents">
-
     
     
-
     
  	<div id="scan_msg_1">
  		<strong>QRコードのパネルをスキャンしてください。</strong>
@@ -142,6 +132,7 @@
 	<div id="scan_msg_2" style="margin-top: 10px;">
 		<form id="qrForm" action="/vticket/shop/scan" method="GET">
 		<div id="scan_msg_3">
+			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
 				<input type=file
 					 accept="image/*"
 					 capture=environment
@@ -155,17 +146,14 @@
 			手入力の場合は「次へ」ボタンをタップしてください。</span>
 		</div>
 		<div id="scan_msg_5">
-			
+		
 		</div>
 		<div id="scan_msg_6" class="text-right" style="margin-top: 10px; margin-bottom: 20px;">
-			<input type="text" class="qrcode-text form-control" id="cd" name="cd" placeholder="店頭メニューコード" autocomplete="off" maxlength="50"><label class=qrcode-text-btn>
 			<button type="submit" class="btn btn-primary" id="btn_next">&nbsp;次へ&nbsp;</button>
 		</div>
 		</form>
 	</div>
-
     </div>
-
     
     <div id="footer">
     <div id="href_top" onclick="$('html, body').animate({scrollTop:0}, 400, 'swing');">ページトップに戻る</div>
@@ -176,16 +164,13 @@
   </div>
   </div>
   
-
 <script type="text/javascript">
 //2値化しない通常のQRコード読み取り
 function openQRCamera(node) {
 	var reader = new FileReader();
-
 	// アップロードされたファイルの読み込み完了後に呼ばれる
 	reader.onload = function() {
 		node.value = "";
-
 		// qrcode.decode後に呼ばれるコールバック
 		qrcode.callback = function(res) {
 			if(res instanceof Error) {
@@ -199,20 +184,16 @@ function openQRCamera(node) {
 				}
 			}
 		};
-
 		// 読み込んだファイルをQRコードリーダーへ渡す
 		qrcode.decode(reader.result);
 	};
-
 	// アップロードされたファイルの読み込み
 	reader.readAsDataURL(node.files[0]);
 }
-
 // カメラ起動時にメッセージを表示する
 function showQRIntro() {
   return confirm("カメラを使用してQRコードを撮影します。");
 }
-
 // 次へボタンクリック時
 $(function() {
 	$('#btn_next').click(function(e) {
@@ -224,6 +205,5 @@ $(function() {
 	});
 });
 </script>
-
 </body>
 </html>
