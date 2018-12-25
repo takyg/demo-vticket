@@ -33,10 +33,10 @@ app.get('/api', function(req, res){
     if (key === 'callback' && /^[a-zA-Z]+[0-9a-zA-Z]*$/.test(val) ) {
       callback = val;
     } else {
-      data.push( '"' + key + '":"' + val + '"' );
+      data[key]=val;
     }
   }
-  data = "{" + data.join(',') + "}";
+  data = JSON.stringify(data);
   res.writeHead(200, {'Content-Type':'application/json; charset=utf-8'});
   res.end( callback ? callback + "(" + data + ")" : data );
 });
