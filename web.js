@@ -26,7 +26,7 @@ app.get('/temp', function(req, res){
 
 app.get('/api', function(req, res){
   var query = url.parse(req.url, true).query;
-  var data = [];
+  var data = {};
   var callback;
   for (var key in query) {
     var val = query[key];
