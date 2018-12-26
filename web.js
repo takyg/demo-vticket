@@ -24,6 +24,16 @@ app.get('/temp', function(req, res){
 	res.end();
 });
 
+app.post('/temp', function(req, res){
+	var html = ejs.render(pageBase, {
+		title:"title",
+		contents:"comment",
+	});
+	res.set('Content-Type', 'text/html');
+	res.send(html);
+	res.end();
+});
+
 app.get('/api', function(req, res){
   var query = url.parse(req.url, true).query;
   var data = {};
