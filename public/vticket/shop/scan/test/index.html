@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Instascan</title>
+    <script src="/vticket/webjars/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/js/instascan.min.js"></script>
     <style>
     video#preview {
@@ -12,19 +13,20 @@
   </head>
   <body>
     <video id="preview"></video>
+    <message id="message"></message>
     <script type="text/javascript">
       let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
       scanner.addListener('scan', function (content) {
-        console.log(content);
+        $('#message').text(content);
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
           scanner.start(cameras[0]);
         } else {
-          console.error('No cameras found.');
+          $('#message').text('カメラが見つかりません');
         }
       }).catch(function (e) {
-        console.error(e);
+        $('#message').text(e);
       });
     </script>
   </body>
