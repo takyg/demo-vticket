@@ -242,6 +242,9 @@ input.selector + label {
 #auth_msg_2, #auth_msg_4 {
 	padding: 0.2em 0.8em;
 }
+#auth_msg_2 span {
+	display: block;
+}
 #auth_msg_2 {
 	background-image: url(/vticket/images/user_card_m.png);
 	background-size: 70px;
