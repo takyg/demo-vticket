@@ -70,10 +70,10 @@ $.ajax({ url: 'https://sheets.googleapis.com/v4/spreadsheets/1_nnegsdTFLoUvd6DyS
 	$("#itemlist").html(h);
 }});
 
-var UrlGetExtHtml = 'https://us-central1-vticket-menu.cloudfunctions.net/ex-html?code=';
+var UrlGetExtHtml = 'https://us-central1-vticket-menu.cloudfunctions.net/st-html?code=';
 $.ajax({ url: UrlGetExtHtml + '601598', contentType: 'application/json', dataType: "json", cache: false, success: function (data) {
 	var h = '' + data.html;
-	h = h.replace(/"\/vticket\/images\//g,"\"//vticket-mwg.firebaseapp.com/vticket/images/").replace(/"\/vticket\/info\/osaka\/images\//g,"\"//www.elavel-club.com/vticket/info/osaka/images/");
+	h = h.replace(/"(\/vticket\/(info\/osaka\/)?images\/)/g,"\"//www.elavel-club.com$1");
 	$("#custom-contents>div.com").html(h);
 }});
 
