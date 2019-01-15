@@ -190,7 +190,7 @@ span.address_tooltip {
     }
 }
 
-#confirm-sm > * .modal-body::after {
+#confirm-lg > * .modal-body::after {
     content: "（マンションにお住まいの方はお部屋番号入力をされたことを確認ください）";
     display: block;
     color: red;
