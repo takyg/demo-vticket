@@ -15,7 +15,7 @@
     font-size: 1.2em;
     display: inline-block;
 }
-@media (orientation:portrait){
+@media only screen and (max-width:767px){
     .marquee-text .marquee {
         white-space: nowrap;
         transform:translateX(100%);
@@ -161,6 +161,7 @@ span.address_tooltip::after {
     white-space:pre-line;
     content: "＜住所が長く入りきらない場合は？＞\a"
     "住所１に入りきらない部分は住所２に続けてご記入ください。\a"
+    "マンションにお住まいの方は必ずお部屋番号の入力をお願いします。お部屋番号未記入による未達が多発しております。 \a"
     "* マンション名が長い場合：番地と棟番号、部屋番号があればマンション名を省略しても届きます\a"
     "* その他住所が長い場合：郵便番号があれば都道府県名を省略しても届きます";
 }
@@ -187,4 +188,12 @@ span.address_tooltip {
     #header {
         margin-bottom: 5em;
     }
+}
+
+#confirm-sm > * .modal-body::after {
+    content: "（マンションにお住まいの方はお部屋番号入力をされたことを確認ください）";
+    display: block;
+    color: red;
+    font-weight: bold;
+    margin: 1ex;
 }
