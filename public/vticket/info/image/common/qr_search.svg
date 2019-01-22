@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="13.518028mm"
+   height="11.806462mm"
+   viewBox="0 0 13.518028 11.806462"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="QRSEARCH.svg">
+   sodipodi:docname="qr_search.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -26,16 +26,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="89.658637"
-     inkscape:cy="950.29215"
+     inkscape:cx="-138.24612"
+     inkscape:cy="137.10532"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="968"
      inkscape:window-height="531"
-     inkscape:window-x="220"
-     inkscape:window-y="220"
-     inkscape:window-maximized="0" />
+     inkscape:window-x="511"
+     inkscape:window-y="380"
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -51,7 +55,8 @@
   <g
      inkscape:label="レイヤー 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-27.793849,-32.240236)">
     <g
        id="g828"
        transform="matrix(0.10476125,0,0,0.10476125,24.486158,23.873454)">
