@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 
 /* SP */
 .pc-only {
@@ -313,7 +313,12 @@ input.selector + label {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 }
-.qrcode-text-btn {
-	height: 3em;
-	width: 3em;
+.pc-only {
+    display: none;
+}
+#item_html dd.description > a.sp-only {
+	display: block;
+    line-height: 1.2em;
+    margin: 1em 3em;
+    text-align: center;
 }

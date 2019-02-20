@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 
 /* PC */
 .site-title {
@@ -110,6 +110,22 @@ table.flat td[colspan] {
 }
 
 /* 外部サイト遷移ダイアログ内SPコメント */
-#confirm-jump comment {
+#confirm-jump comment, .sp-only {
     display: none;
+}
+div#scan_msg_3::before {
+    content: "パソコンやタブレットの場合、カメラが起動せずファイルの選択画面が表示される場合があります。その場合はＱＲコードの下に記載された5～6文字のコードを下の欄に入力して「次へ」をクリックしてください。";
+    display: block;
+    width: 50%;
+    float: right;
+    font-size: smaller;
+    border-radius: 2em;
+    background-color: #fff4f4;
+    padding: 2em;
+}
+
+div#scan_msg_3::after {
+    clear: both;
+    content: "";
+    display: block;
 }

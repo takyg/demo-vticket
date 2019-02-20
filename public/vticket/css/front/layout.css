@@ -960,9 +960,11 @@ ul.select-one li {
 /* 今すぐ利用画面(フェーズ2) */
 .qrcode-text-btn {
   display: inline-block;
-  height: 1.5em;
-  width: 1em;
-  background: url(/vticket/css/qr_icon.svg) 50% 50% no-repeat;
+  height: 5em;
+  width: 5em;
+  margin: 2em;
+  margin-left: 20%;
+  background: url(/vticket/css/qr_icon-4662f6e9ae045121f06f76672bdb1d37.svg) 50% 50% no-repeat;
   cursor: pointer;
 }
 
@@ -989,3 +991,23 @@ ul.select-one li {
 .input-auth-number {
 	font-size: 16px;
 }
+icon {
+    display:block;
+    font-size:xx-small;
+    font-weight:normal;
+    padding:1ex;
+    border-radius:1.4ex;
+    float:right;
+    margin-bottom:1em;
+}
+icon.itemclass-1 {
+    content:"モノメニュー";
+    background-color:#9eceac;
+}
+icon.itemclass-5 {
+    content:"コトメニュー";
+    background-color:#ecb8f1;
+}
+icon.itemclass-9 {
+    content:"ＱＲコード対応コトメニュー";
+    background-color:#d9e5f5;
